@@ -1,0 +1,59 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h2 class="m-0 font-weight-bold text-primary">Alumnos</h2>
+        <h6 class="m-0 font-weight-bold text-muted">Total de alumnos: {{totalUsuarios}}</h6>
+    </div>    
+    <div class="card" *ngIf="cargando">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido</th>
+                        <th>Email</th>
+                        <th>Cuatrimestre</th>
+                        <th>Carrera</th>
+                        <th>matricula</th>
+                        <th>materia</th>
+                        <th>Opciones</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let alumno of alumnos">
+                        <td>{{alumno.nombre}}</td>
+                        <td>{{alumno.apellido1}}</td>
+                        <td *ngIf="alumno.apellido2">{{alumno.apellido2}}</td>
+                        <td *ngIf="!alumno.apellido2">*</td>
+                        <td>{{alumno.email}}</td>
+                        <td>{{alumno.cuatrimestre}}</td>
+                        <td>{{alumno.carrera}}</td>
+                        <td>{{alumno.matricula}}</td>
+                        <td>{{alumno.materia.nombre}}</td>
+                        <td>
+                            <a (click)="eliminarAlumno(alumno)">
+                                <i class="fas fa-trash text-danger pointer" style="margin-right: 20px;"></i>
+                            </a>
+                            <a href="">
+                                <i class="fas fa-edit text-primary"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <div>
+                <button class="btn btn-secondary" (click)="cambiarPagina(-5)" >Anterior</button>
+                &nbsp;
+                <button class="btn btn-secondary" (click)="cambiarPagina(5)" >Siguiente</button>
+            </div>
+        </div>
+    </div>
+</div>

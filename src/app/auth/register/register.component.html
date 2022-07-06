@@ -1,0 +1,186 @@
+<div class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Registrate un nuestro sistema</h1>
+                            </div>
+
+                                <div style="padding-bottom: 10px;">
+                                    *Obligatorio
+                                   
+                                </div>
+                            
+
+                            <form 
+                                class="user"
+                                id="registerForm"
+                                [formGroup]="registerForm"
+                                (ngSubmit)="createUser()"
+                            >
+                            <!-- Nombre -->
+                                <div class="form-group row">
+                                    
+                                        <input 
+                                        type="text" 
+                                        class="form-control form-control-user" 
+                                        placeholder="*Nombre completo"
+                                        formControlName="nombre"
+                                        >
+                                   
+                                </div>
+
+                                
+                                <!-- Apellidos -->
+                                
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input 
+                                            type="text" 
+                                            class="form-control form-control-user" 
+                                            placeholder="*Primer apellido"
+                                            formControlName="apellido1">
+                                    </div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input 
+                                            type="text" 
+                                            class="form-control form-control-user" 
+                                            placeholder="Segundo apellido"
+                                            formControlName="apellido2">
+                                    </div>
+                
+                                </div>
+                                    
+                                <!-- MATRICULA -->
+                                <div class="form-group row">
+                                   
+                                        <input 
+                                        type="text" 
+                                        class="form-control form-control-user" 
+                                        placeholder="Ingresa tu matricula"
+                                        formControlName="matricula"
+                                        >
+                                </div>
+                                <!-- CURRICULAR -->
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <select  
+                                               class="form-control rounded-pill"
+                                               formControlName="materia"
+                                               >
+                                            <option value="null" disabled="true" [selected]="true">Selecciona un co-curricular</option>
+                                            <option *ngFor="let materia of materias" [value]="materia._id">{{materia.nombre}}</option>
+                                            
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <select  
+                                               class="form-control rounded-pill"
+                                               formControlName="cuatrimestre"
+                                               >
+                                            <option value="null" disabled="true" [selected]="true">Selecciona tu cuatrimestre</option>
+                                            <option value="0">Induccion</option>
+                                            <option value="1">Primero</option>
+                                            <option value="2">Segundo</option>
+                                            <option value="3">Tercero</option>
+                                            <option value="4">Cuarto</option>
+                                            <option value="5">Quinto</option>
+                                            <option value="6">Sexto</option>
+                                            <option value="7">Septimo</option>
+                                            <option value="8">Octavo</option>
+                                            <option value="9">Noveno</option>
+                                            <option value="10">Decimo</option>
+                                        </select>
+                                    </div>
+
+                                    </div>
+                                    <div class="form-group row">
+                                        <select  
+                                        class="form-control rounded-pill"
+                                        formControlName="carrera"
+                                        >
+                                            <option value="null" disabled="true" [selected]="true">Selecciona tu carrera</option>
+                                            <option value="ISW">INGENIERÍA EN SOFTWARE</option>
+                                            <option value="ITM">INGENIERÍA EN TECNOLOGÍAS DE MANUFACTURA</option>
+                                            <option value="ITA">INGENIERÍA EN TECNOLOGÍA AMBIENTAL</option>
+                                            <option value="LAGE">LICENCIATURA EN ADMINISTRACIÓN Y GESTIÓN EMPRESARIAL</option>
+                                            <option value="IRT">INGENIERÍA EN REDES Y TELECOMUNICACIONES</option>
+                                            <option value="IC">INGENIERÍA CIVIL</option>
+
+                                        </select>
+                                    </div>
+
+                                <!-- EMAIL -->
+                                <div class="form-group">
+                                    <input 
+                                        type="email" 
+                                        class="form-control form-control-user" 
+                                        id="exampleInputEmail"
+                                        placeholder="Correo electronico"
+                                        formControlName="email"
+                                    >
+                                </div>
+
+                                <!-- PASSWORDS -->
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input 
+                                            type="password" 
+                                            class="form-control form-control-user"
+                                            placeholder="Password"
+                                            formControlName="password"
+                                        >
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input 
+                                            type="password" 
+                                            class="form-control form-control-user"
+                                            placeholder="Repeat Password"
+                                            formControlName="password2"
+                                        
+                                        >
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p *ngIf="campoNoValido('nombre')" class="text-danger">nombre invalido</p>
+                                    <p *ngIf="campoNoValido('matricula')" class="text-danger">matricula invalida</p>
+                                    <p *ngIf="campoNoValido('email')" class="text-danger">correo invalida</p>
+                                    <p *ngIf="campoNoValido('carrera')" class="text-danger">carrera invalida</p>
+                                    <p *ngIf="campoNoValido('cuatrimestre')" class="text-danger">cuatrimestre invalida</p>
+                                    <p *ngIf="campoNoValido('materia')" class="text-danger">materia invalida</p>
+                                    <p *ngIf="contrasenasNoValidas()" class="text-danger">las contrasenas deben coincidir</p>
+                                    
+                                    
+
+                                    <p *ngIf="contrasenasNoValidas()" class="text-danger">contrasenas invalidas</p>
+                                </div>
+                                <button class="btn btn-primary btn-user btn-block" type="submit">
+                                    registrarse
+                                </button>
+                                
+                             
+                              
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="login.html">Already have an account? Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
