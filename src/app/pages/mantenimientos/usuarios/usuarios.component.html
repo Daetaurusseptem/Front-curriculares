@@ -14,6 +14,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>Foto</th>
                         <th>Nombre</th>
                         <th>Primer Apellido</th>
                         <th>Segundo Apellido</th>
@@ -28,6 +29,9 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let alumno of alumnos">
+                        <td (click)="mostrarimgModal(alumno)" class="selector">
+                            <img class="card-img-top animated fadeIn" [src]="alumno.img | mostrarImagen:'usuario'" class="avatar" alt="">
+                        </td>
                         <td>{{alumno.nombre}}</td>
                         <td>{{alumno.apellido1}}</td>
                         <td *ngIf="alumno.apellido2">{{alumno.apellido2}}</td>
@@ -41,7 +45,7 @@
                             <a (click)="eliminarAlumno(alumno)">
                                 <i class="fas fa-trash text-danger pointer" style="margin-right: 20px;"></i>
                             </a>
-                            <a href="">
+                            <a [routerLink]="['/dashboard/alumno',alumno._id]">
                                 <i class="fas fa-edit text-primary"></i>
                             </a>
                         </td>

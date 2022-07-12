@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-6">
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Crear Materia</h6>
+            </div>
+            <div class="card-body">
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Crear materias mediante un nombre y descripcion</h1>
+                    </div>
+                    <form 
+                        class="user"
+                        id="registerMaestroForm"
+                        [formGroup]="crearMateriaForm"
+                        (ngSubmit)="crearMateria()"
+                        >
+        
+                        <div class="form-group row">
+        
+                            <input type="text" 
+                                   class="form-control form-control-user" 
+                                   placeholder="Nombre de la Materia"
+                                   formControlName="nombre"
+                                    >
+        
+                        </div>
+                        <div class="form-group row">
+
+                                <input type="text" 
+                                class="form-control form-control-user" 
+                                placeholder="Descripciopn"
+                                formControlName="descripcion"
+                                >
+
+                        </div>
+                        <div class="card-body">
+                            <p *ngIf="campoNoValido('nombre')" class="text-danger">El nombre no es valido</p>
+                            <p *ngIf="campoNoValido('descripcion')" class="text-danger">La descripcion no es valida</p>
+                        </div>
+                        <button class="btn btn-primary btn-user btn-block" type="submit">
+                            Crear Materia
+                        </button>
+                        
+                    </form>
+                    <hr>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -127,7 +127,6 @@ export class CrearMaestroComponent implements OnInit {
     this.materiasService.getMaterias()
     .subscribe((items:materias[])=>{
      this.materias = items
-     console.log(this.materias);
     })
   }
 }

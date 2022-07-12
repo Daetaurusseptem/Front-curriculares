@@ -1,0 +1,148 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <h4 class="card-title">Actualizar Alumno</h4>
+                </div>
+                
+                <form [formGroup]="alumnoForm" action="" class="form-group">
+                    <!-- <label >Gestionar Instructores</label>
+                    <select formControlName="id" class="form-control" id="exampleFormControlSelect2">
+                        <option [value]="alumnoSelecc.materia">Ver instructor</option>
+                        <option  [value]="administrador._id"  *ngFor="let administrador of administradores">{{administrador.nombre}} {{administrador.apellido1}} {{administrador.apellido2}}</option>
+                      </select> -->
+                </form>
+                <form class="form p-t-20" [formGroup]="alumnoForm">
+                     
+                     <div class="form-group row">
+                         <div class="col-sm-9">
+                             <label for="" >Foto</label>
+                             <div class="input-group">
+                                <td (click)="mostrarimgModal(alumnoSeleccionado)" class="selector">
+                                    <img class="card-img-top animated fadeIn" [src]="alumnoSeleccionado.img | mostrarImagen:'usuario'" class="img-avatar" alt="">
+                                </td>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Nombre</label>
+                        <div class="input-group">
+                            <input 
+                            type="text" 
+                            class="form-control"
+                            formControlName="nombre"
+                            [value]="alumnoSeleccionado?.nombre"
+                            >
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputuname">Primer Apellido</label>
+                            <div class="input-group">
+                                <input 
+                                      type="text" 
+                                      class="form-control" 
+                                      placeholder="Nombre completo"
+                                      formControlName="apellido1"
+                                      [value]="alumnoSeleccionado?.apellido1"
+                                      >
+                            </div>
+                        </div>
+                        <div *ngIf="alumnoSeleccionado?.apellido2"class="form-group">
+                            <label for="exampleInputuname">Segundo Apellido</label>
+                            <div class="input-group">
+                                <input 
+                                      type="text" 
+                                      class="form-control" 
+                                      placeholder="Nombre completo"
+                                      formControlName="apellido1"
+                                      [value]="alumnoSeleccionado?.apellido2"
+                                      >
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputuname">Matricula</label>
+                            <div class="input-group">
+                                <input 
+                                      type="text" 
+                                      class="form-control" 
+                                      placeholder="Nombre completo"
+                                      formControlName="matricula"
+                                      [value]="alumnoSeleccionado?.matricula"
+                                      >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputuname">Correo Electronico</label>
+                            <div class="input-group">
+                                <input 
+                                      type="text" 
+                                      class="form-control" 
+                                      placeholder="Nombre completo"
+                                      formControlName="email"
+                                      [value]="alumnoSeleccionado?.email"
+                                      >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputuname">Materia</label>
+                            <div class="input-group">
+                                <select 
+                                      type="text" 
+                                      class="form-control" 
+                                      placeholder="Nombre completo"
+                                      formControlName="materia"
+                                      >
+                                      <option *ngFor="let materia of materias" [value]="materia._id" >{{materia.nombre}}</option>
+                                
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputuname">Cuatrimestre</label>
+                            <div class="input-group">
+                                <input 
+                                      type="text" 
+                                      class="form-control" 
+                                      placeholder="Nombre completo"
+                                      formControlName="cuatrimestre"
+                                      [value]="alumnoSeleccionado?.cuatrimestre"
+                                      >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputuname">Carrera</label>
+                            <div class="input-group">
+                                <select  
+                                        class="form-control"
+                                        formControlName="carrera"
+                                        [value]="alumnoSeleccionado?.carrera"
+                                        >
+                                            <option value="null" disabled="true" [selected]="true">Selecciona tu carrera</option>
+                                            <option value="ISW">INGENIERÍA EN SOFTWARE</option>
+                                            <option value="ITM">INGENIERÍA EN TECNOLOGÍAS DE MANUFACTURA</option>
+                                            <option value="ITA">INGENIERÍA EN TECNOLOGÍA AMBIENTAL</option>
+                                            <option value="LAGE">LICENCIATURA EN ADMINISTRACIÓN Y GESTIÓN EMPRESARIAL</option>
+                                            <option value="IRT">INGENIERÍA EN REDES Y TELECOMUNICACIONES</option>
+                                            <option value="IC">INGENIERÍA CIVIL</option>
+
+                                        </select>
+                            </div>
+                        </div>
+                        
+                        <button 
+                        type="submit" 
+                        class="btn btn-success waves-effect waves-light m-r-10"
+                        (click)="guardarAlumno()"
+                        [disabled]="alumnoForm.invalid"
+                    >
+                        <i class="fa fa-save"></i>
+                        Guardar
+                    </button>
+
+                </form>
+            

@@ -15,7 +15,7 @@ export class SidebarService {
         {title:'Maestros', url:'maestros'},
         {title:'Materias', url:'materias'},
         {title:'Crear Maestro', url:'crear-maestro'},
-        {title:'Crear Materia', url:'crear-materia'},
+        {title:'Crear Materia', url:'materias/crear-materia'},
         {title:'Crear Evento', url:'crear-evento'},
       ]
     },

@@ -13,7 +13,20 @@ const url_base = environment.baseUrl;
 export class MateriasService {
 
   constructor(private http: HttpClient) { }
+  
+  crearMateria(materiaForm:{nombre:string,descripcion:string}){
+    console.log('front end materia form service'+materiaForm.nombre);
+    return this.http.post<{ok:boolean, materia:materias}>(`${url_base}/materias`, materiaForm, this.headers)
+  }
 
+
+  deleteInstructor(idMateria:string, idUsuario:string){
+    return this.http.delete(`${url_base}/materias/${idMateria}/${idUsuario}`, this.headers)
+  }
+ 
+  updateMateria(id:string ,materia:{nombre:string, descripcion:string}){
+    return this.http.put(`${url_base}/materias/${id}`, {materia:materia}, this.headers)
+  }
 
   getMaterias(){
     return this.http.get<materiasResponse>(`${url_base}/materias`)
@@ -34,10 +47,38 @@ export class MateriasService {
   }
 
   addUser(materiaId:string, alumnoId:string){
-    return this.http.put(`${url_base}/materias/alumno/${alumnoId}/${materiaId}`,{})
+    return this.http.put(`${url_base}/materias/alumno/${alumnoId}/${materiaId}`,{}, this.headers)
   }
   
   deleteMateria(id:string){
-    return this.http.delete(`${url_base}/materias/${id}`)
+    return this.http.delete(`${url_base}/materias/${id}`,this.headers)
   }
+
+
+
+  get headers(): object{
+    return {
+      headers: {
+        'x-token': this.token
+      }
+    };
+  }
+  get token(): string{
+    return localStorage.getItem('token') || '';
+  }
+  // get role():'ADMIN_ROLE'|'USER_ROLE'{
+  //   return this.usuario.role
+  // }
+
+  // get uid(): string{
+  //   return this.usuario.uid || '';
+  // }
+  guardarLocalStorage(token:string, menu:any){
+    localStorage.setItem('token', token );
+    localStorage.setItem('menu', JSON.stringify(menu) );
+  }
+  borrarLocalStorage(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('menu');
+}
 }

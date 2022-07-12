@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <h4 class="card-title">Actualizar Maestro</h4>
+                </div>
+                
+                <form class="form p-t-20" [formGroup]="maestroForm">
+                     
+                     <div class="form-group row">
+                         <div class="col-sm-9">
+                             <label for="" >Foto</label>
+                             <div class="input-group">
+                                <td (click)="mostrarimgModal(maestroSeleccionado)" class="selector">
+                                    <img class="card-img-top animated fadeIn" [src]="maestroSeleccionado.img | mostrarImagen:'usuario'" class="img-avatar" alt="">
+                                </td>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Nombre</label>
+                        <div class="input-group">
+                            <input 
+                            type="text" 
+                            class="form-control"
+                            formControlName="nombre"
+                            [value]="maestroSeleccionado?.nombre"
+                            >
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputuname">Primer Apellido</label>
+                            <div class="input-group">
+                                <input 
+                                      type="text" 
+                                      class="form-control" 
+                                      placeholder="Nombre completo"
+                                      formControlName="apellido1"
+                                      [value]="maestroSeleccionado?.apellido1"
+                                      >
+                            </div>
+                        </div>
+                        <div *ngIf="maestroSeleccionado?.apellido2"class="form-group">
+                            <label for="exampleInputuname">Segundo Apellido</label>
+                            <div class="input-group">
+                                <input 
+                                      type="text" 
+                                      class="form-control" 
+                                      placeholder="Nombre completo"
+                                      formControlName="apellido2"
+                                      [value]="maestroSeleccionado?.apellido2"
+                                      >
+                            </div>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputuname">Correo Electronico</label>
+                            <div class="input-group">
+                                <input 
+                                      type="text" 
+                                      class="form-control" 
+                                      placeholder="Nombre completo"
+                                      formControlName="email"
+                                      [value]="maestroSeleccionado?.email"
+                                      >
+                            </div>
+                        </div>
+                                    
+                        <button 
+                        type="submit" 
+                        class="btn btn-success waves-effect waves-light m-r-10"
+                        (click)="guardarMaestro()"
+                        [disabled]="maestroForm.invalid"
+                    >
+                        <i class="fa fa-save"></i>
+                        Guardar
+                    </button>
+
+                </form>
+            

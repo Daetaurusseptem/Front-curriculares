@@ -1,8 +1,53 @@
-<body id="page-top">
-    
+   
     <!-- Page Wrapper -->
     <div id="wrapper">
-        <app-side-bar></app-side-bar>
+        
+
+        <!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Unipoli Extras</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Interface
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item" *ngFor="let menuItem of menuItems">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i [class]="menuItem.icon"></i>
+            <span>{{menuItem.title}}</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div  class="bg-white py-2 collapse-inner rounded">
+                <a *ngFor="let sub of menuItem.submenu" 
+                    class="collapse-item"
+                    [routerLink]='sub.url' 
+                    routerLinkActive='active'
+                    [routerLinkActiveOptions]="{exact:true}"
+                     >{{sub.title}}</a>
+            </div>
+        </div>
+    </li>    
+
+</ul>
+
+
+        
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
             <div id="content">
@@ -13,11 +58,15 @@
                 
 
                 </div>
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright © Your Website 2020</span>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
-
-
-
-
+        
     </div>
-</body>
+    <app-modal-imagen></app-modal-imagen>

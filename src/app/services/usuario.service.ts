@@ -30,6 +30,8 @@ export class UsuarioService {
       map( (resp: any) => {
         
         const uid = resp.uid;
+        const {nombre, email, apellido1, role, cuatrimestre='', carrera='', img= '', matricula, materia, apellido2, servicioSocial=null} = resp.usuario;
+        this.usuario = new Usuario(uid, nombre, apellido1, email, cuatrimestre, carrera, matricula, materia, servicioSocial, apellido2, '', img, undefined, role );
         this.guardarLocalStorage(resp.token, resp.menu)
         return true;
       }),

@@ -9,8 +9,16 @@ import { CrearMaestroComponent } from './mantenimientos/crear-maestro/crear-maes
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaestrosComponent } from './mantenimientos/maestros/maestros.component';
 import { MateriasMaestroComponent } from './maestro-herramientas/materias-maestro/materias-maestro.component';
-import { MateriasComponent } from './materias/materias.component';
-import { MateriaComponent } from './materias/materia.component';
+import { MateriasComponent } from './mantenimientos/materias/materias.component';
+import { MateriaComponent } from './mantenimientos/materias/materia.component';
+import { MaestroComponent } from './mantenimientos/maestros/maestro.component';
+import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { UsuarioComponent } from './mantenimientos/usuarios/usuario.component';
+import { CrearMateriaComponent } from './mantenimientos/crear-materia/crear-materia.component';
+import { ComponentsModule } from '../components/components.module';
+import { HorarioComponent } from './mantenimientos/horario/horario.component';
+
 
 
 
@@ -23,14 +31,21 @@ import { MateriaComponent } from './materias/materia.component';
     MaestrosComponent,
     MateriasMaestroComponent,
     MateriasComponent,
-    MateriaComponent
+    MateriaComponent,
+    MaestroComponent,
+    DashboardAdminComponent,
+    UsuarioComponent,
+    CrearMateriaComponent,
+    HorarioComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipesModule,
+    ComponentsModule
   ]
 })
 export class PagesModule { }

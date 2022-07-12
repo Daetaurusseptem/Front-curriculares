@@ -14,6 +14,8 @@ export class MaestrosService {
 
   constructor(private http:HttpClient) { }
 
+  
+
    crearMaestro(formData:maestro){
     
     let nuevoUsuario={
@@ -24,20 +26,33 @@ export class MaestrosService {
       password:formData.password,
       role:'maestro'
     }
-    return this.http.post<usuarioCreadoResponse>(`${urlBase}/usuarios/maestro`, nuevoUsuario)
+    return this.http.post<usuarioCreadoResponse>(`${urlBase}/usuarios/maestro`, nuevoUsuario, this.headers)
     
     
    
   }
   
+
+  updateAlumno(maestro:maestro, id:string){
+    return this.http.put(`${urlBase}/alumnos/${id}`, maestro, this.headers)
+  }
+
   addMaestroMateria(materiaId:string, idUsuario:string ){
     const administradores = idUsuario
-    return this.http.put(`${urlBase}/materias/${materiaId}`, {'administradores':administradores})
+    return this.http.put(`${urlBase}/materias/actualizarAdmin/${materiaId}`, {'administradores':administradores}, this.headers)
     
   }
 
   getMaestros(desde: number = 0){
     return this.http.get<maestrosResponse>(`${urlBase}/maestros?desde=${desde}`, this.headers)
+  }
+  getMaestro(id:string){
+    return this.http.get<{ok:boolean, maestro:maestro}>(`${urlBase}/maestros/${id}`, this.headers)
+           .pipe(
+            map(item=>{
+              return item.maestro
+            })
+           )
   }
 
   get headers(): object{
