@@ -1,53 +1,105 @@
 <div class="row justify-content-md-center">
-    <div class="col-md-auto">
-        <button type="button" class="btn btn-primary">L</button>
-    </div>
-    <div class="col-md-auto">
-        <button type="button" class="btn btn-primary">M</button>
-    </div>
-    <div class="col-md-auto">
-        <button type="button" class="btn btn-primary">M</button>
-    </div>
-    <div class="col-md-auto">
-        <button type="button" class="btn btn-primary">J</button>
-    </div>
-    <div class="col-md-auto">
-        <button type="button" class="btn btn-primary">V</button>
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <a (click)="changeDay('lunes')" type="button" class="btn btn-secondary">Lunes</a>
+            <a (click)="changeDay('martes')" type="button" class="btn btn-secondary">Martes</a>
+            <a (click)="changeDay('miercoles')" type="button" class="btn btn-secondary">Miercole</a>
+            <a (click)="changeDay('jueves')" type="button" class="btn btn-secondary">Jueves</a>
+            <a (click)="changeDay('viernes')" type="button" class="btn btn-secondary">Viernes</a>
+        </div>
     </div>
 </div>
 
 
 <div class="row mt-4 mb-4">
-    <div class="col-md-6">
+
+    <div class="col-md-3">
         <div class="card">
             <div class="card-body">
                 <div>
-                    <h4 class="card-title">Actualizar Materia</h4>
+                    <h6 class="card-title">Selecciona horario {{diaSeleccionado}}</h6>
                 </div>
-            </div>
-
-        </div>
-
-    </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <div>
-                    <h6 class="card-title">Selecciona horario</h6>
-                </div>
-                <div class="form-group">
-                    <div class='input-group date' id='datetimepicker3'>
-                       <input type='text' class="form-control" />
-                       <span class="input-group-addon">
-                       <span class="glyphicon glyphicon-time"></span>
-                       </span>
+                <form [formGroup]="horariosForm">
+                    <label class="form-label mr-2">{{diaSeleccionado}} Hora Inicio</label>
+                    <div class="form-row">
+                        <select formControlName="horaInicio" name="" id="">
+                            <option value="null" disabled="true" [selected]="true">-</option>
+                            <option [ngValue]="hora" class="form-control" *ngFor="let hora of horas">{{hora}}</option>
+                        </select>
+                        <h6 class="ml-4 font-weight-bold">:</h6>
+                        <select class="form-control" class="ml-4" formControlName="minutoInicio" name="" id="">
+                            <option value="null" disabled="true" [selected]="true">-</option>
+                            <option [ngValue]="minuto"  *ngFor="let minuto of minutos">{{minuto|digitoIndividual}}
+                            </option>
+                        </select>
                     </div>
-                 </div>
+                    <label class="form-label mr-2">{{diaSeleccionado}} Hora Acaba</label>
+                    <div class="form-row">
+                        <select formControlName="horaTermina" name="" id="">
+                            <option value="null" disabled="true" [selected]="true">-</option>
+                            <option  class="form-control" [ngValue]="hora" *ngFor="let hora of horas">{{hora}}</option>
+                        </select>
+                        <h6 class="ml-4 font-weight-bold">:</h6>
+                        <select class="form-control" class="ml-4" formControlName="minutoTermina" name="" id="">
+                            <option value="null" disabled="true" [selected]="true">-</option>
+                            <option [ngValue]="minuto" *ngFor="let minuto of minutos">{{minuto|digitoIndividual}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col text-danger">
+                        <p *ngIf="campoNoValido('horaInicio')">* El nombre es obligatorio</p>
+                        <p *ngIf="campoNoValido('minutoInicio')">* El nombre es obligatorio</p>
+                        <p *ngIf="campoNoValido('horaTermina')">* El nombre es obligatorio</p>
+                        <p *ngIf="campoNoValido('minutoTermina')">* El nombre es obligatorio</p>
+                    </div>
+
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10 mt-2"
+                        (click)="guardarHorarioDia()" [disabled]="horariosForm.invalid">
+                        <i class="fa fa-save"></i>
+                        Guardar
+                    </button>
+                </form>
+
             </div>
 
         </div>
 
     </div>
+    <div *ngIf="horarioMostrar" class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>dia</th>
+                                <th>Inicia</th>
+                                <th>Termina</th>
+                                <th>Opciones</th>
+        
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let horario of horarioMostrar">
+                                
+                                <td>{{horario.dia}}</td>
+                                <td>{{horario.empiezaHora}}:{{horario.empiezaMinuto|digitoIndividual}}</td>
+                                <td>{{horario.terminaHora}}:{{horario.terminaMinuto|digitoIndividual}}</td>
+                                
+                                <td>
+                                    <a >
+                                        <i class="fas fa-trash text-danger pointer" style="margin-right: 20px;"></i>
+                                    </a>
+                                    <a [routerLink]="['/dashboard/materia']">
+                                        <i class="fas fa-edit text-primary"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-</div>
-            
+        </div>
+    </div>

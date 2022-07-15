@@ -6,7 +6,7 @@ import { PagesComponent } from './pages/pages.component';
 import { PagesRoutingModule } from './pages/pages.routing';
 
 const routes: Routes = [
-  { path: '', component: PagesComponent },
+  { path: '', redirectTo:'/dashboard', pathMatch:'full' },
   { path: '**', component: NoPageFoundComponent }
 ];
 

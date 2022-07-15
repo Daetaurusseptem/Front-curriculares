@@ -8,6 +8,7 @@ import { delay, map } from 'rxjs/operators';
 import { Usuario } from 'src/models/usuario.model';
 import { ImgModalServiceService } from 'src/app/services/img-modal-service.service';
 import { Subscription } from 'rxjs';
+import { MateriasService } from 'src/app/services/materias.service';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   constructor(
     private alumnosService:AlumnosService,
     private usuarioService:UsuarioService,
-    private imgModalService:ImgModalServiceService
+    private imgModalService:ImgModalServiceService,
+    private materiaService:MateriasService
     ) { 
       this.cargarUsuarios();
       this.imgSubs = this.imgSubs = this.imgModalService.nuevaImagen
@@ -80,6 +82,7 @@ export class UsuariosComponent implements OnInit, OnDestroy {
     .subscribe(resp=>{
       
       this.alumnos = resp
+      console.log(this.alumnos);
     })
   }
   eliminarAlumno(usuario:alumno){
@@ -103,5 +106,17 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   }
   mostrarimgModal(usuario: alumno){
     this.imgModalService.abrirModal('usuario', usuario._id, usuario.img);
+  }
+
+  cargarMateriaNombre(id:string){
+
+    return this.materiaService.getMateria(id)
+    .pipe(
+      map(item=>{
+        return item.nombre
+      })
+    )
+
+
   }
 }

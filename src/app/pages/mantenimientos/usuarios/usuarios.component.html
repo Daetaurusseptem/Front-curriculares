@@ -40,7 +40,8 @@
                         <td>{{alumno.cuatrimestre}}</td>
                         <td>{{alumno.carrera}}</td>
                         <td>{{alumno.matricula}}</td>
-                        <td>{{alumno.materia.nombre}}</td>
+                        <td *ngIf="alumno.materia">{{alumno.materia.nombre|| ''}}</td>
+                        <td *ngIf="!alumno.materia">*</td>
                         <td>
                             <a (click)="eliminarAlumno(alumno)">
                                 <i class="fas fa-trash text-danger pointer" style="margin-right: 20px;"></i>

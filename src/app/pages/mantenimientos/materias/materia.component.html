@@ -9,8 +9,8 @@
                 <form [formGroup]="asesorForm" action="" class="form-group">
                     <label >Gestionar Instructores</label>
                     <select formControlName="id" class="form-control" id="exampleFormControlSelect2">
-                        <option value="null" disabled="true" [selected]="true">Editar instructores</option>
                         <option value="agregar">Agregar</option>
+                        <option value="null" disabled="true" [selected]="true">Editar instructores</option>
                         <option  [value]="administrador._id"  *ngFor="let administrador of administradores">{{administrador.nombre}} {{administrador.apellido1}} {{administrador.apellido2}}</option>
                       </select>
                 </form>
@@ -58,7 +58,7 @@
                         </div>
                         </div>
                     
-                        <a [routerLink]="['/horarios', materia._id]"><h6>Ver Horarios</h6></a>
+                        <a [routerLink]="['/dashboard/horarios', materia._id]"><h6>Ver Horarios</h6></a>
                    
                     <button 
                         type="submit" 

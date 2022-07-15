@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { delay, Subscription } from 'rxjs';
+import { delay, map, Subscription } from 'rxjs';
+import { Horario } from 'src/app/interfaces/horario.interface';
 import { maestro } from 'src/app/interfaces/maestro.interface';
 import { materias } from 'src/app/interfaces/materiasSimple.interface';
+import { HorariosService } from 'src/app/services/horarios.service';
 import { ImgModalServiceService } from 'src/app/services/img-modal-service.service';
 import { MateriasService } from 'src/app/services/materias.service';
 import Swal from 'sweetalert2';
@@ -13,6 +15,8 @@ import Swal from 'sweetalert2';
   ]
 })
 export class MateriasComponent implements OnInit, OnDestroy {
+  horarios:Horario[]
+  horarioMostrar:Horario[];
   totalUsuarios=0;
   materias:materias[]=[]
   totalMaterias:any;
@@ -21,7 +25,8 @@ export class MateriasComponent implements OnInit, OnDestroy {
 
   constructor(
       private materiasService:MateriasService,
-      private imgModalService:ImgModalServiceService
+      private imgModalService:ImgModalServiceService,
+      private horarioService:HorariosService
       ) {
         this.cargarMaterias();
     this.imgSubs = this.imgSubs = this.imgModalService.nuevaImagen
@@ -35,7 +40,7 @@ export class MateriasComponent implements OnInit, OnDestroy {
        }
 
   ngOnInit(): void {
-    
+
       }
   
       ngOnDestroy(): void {
@@ -74,6 +79,8 @@ export class MateriasComponent implements OnInit, OnDestroy {
       this.imgModalService.abrirModal('materia', usuario._id, usuario.img);
   
     }
+
+ 
   }
   
  

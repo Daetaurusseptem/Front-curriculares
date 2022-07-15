@@ -37,7 +37,9 @@
                             </ul>
                         </td>
                         <td>{{materia.descripcion}}</td>
-                        <td >*</td>
+                        <td >
+                            <li *ngFor="let horario of horarios">{{horario.dia}}</li>
+                        </td>
                         
                         <td>
                             <a (click)="eliminarMateria(materia)">

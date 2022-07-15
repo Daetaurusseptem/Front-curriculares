@@ -18,6 +18,11 @@ import { UsuarioComponent } from './mantenimientos/usuarios/usuario.component';
 import { CrearMateriaComponent } from './mantenimientos/crear-materia/crear-materia.component';
 import { ComponentsModule } from '../components/components.module';
 import { HorarioComponent } from './mantenimientos/horario/horario.component';
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -45,7 +50,13 @@ import { HorarioComponent } from './mantenimientos/horario/horario.component';
     FormsModule,
     ReactiveFormsModule,
     PipesModule,
-    ComponentsModule
+    ComponentsModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    NgxMatDatetimePickerModule,
+    MatFormFieldModule,
+    MatInputModule
+    
   ]
 })
 export class PagesModule { }
