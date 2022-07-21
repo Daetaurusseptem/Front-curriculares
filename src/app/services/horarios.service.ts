@@ -17,18 +17,18 @@ export class HorariosService {
                 dia:'lunes'|'martes'|'miercoles'|'jueves'|'viernes',
                 horas:{
                         horaInicio:number,
-                        minutoInicio:number, 
+                        minutoInicio:number,
                         horaTermina:number,
-                        minutoTermina:number, 
+                        minutoTermina:number,
                       }
                )
-  {    
+  {
     const data ={
         dia,
         empiezaHora:horas.horaInicio,
         empiezaMinuto:horas.minutoInicio,
         terminaHora:horas.horaTermina,
-        terminaMinuto:horas.minutoTermina  
+        terminaMinuto:horas.minutoTermina
     }
     return this.http.put(`${urlBase}/horarios/${idMateria}`, data, this.headers)
   }
@@ -37,6 +37,7 @@ export class HorariosService {
     return this.http.get<materiasResponse>(`${urlBase}/horarios/${idMateria}`, this.headers)
     .pipe(
       map(item=>{
+        console.log(item);
         return item.materias
       }
       )
@@ -53,6 +54,6 @@ export class HorariosService {
   }
   get token(): string{
     return localStorage.getItem('token') || '';
-  }  
+  }
 
 }

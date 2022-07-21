@@ -23,6 +23,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { EventosComponent } from './mantenimientos/eventos/eventos.component';
+import { EventoComponent } from './mantenimientos/eventos/evento.component';
+import { CrearEventoComponent } from './mantenimientos/crear-evento/crear-evento.component';
 
 
 
@@ -42,6 +45,9 @@ import { MatInputModule } from '@angular/material/input';
     UsuarioComponent,
     CrearMateriaComponent,
     HorarioComponent,
+    EventosComponent,
+    EventoComponent,
+    CrearEventoComponent
   ],
   imports: [
     CommonModule,
@@ -56,7 +62,7 @@ import { MatInputModule } from '@angular/material/input';
     NgxMatDatetimePickerModule,
     MatFormFieldModule,
     MatInputModule
-    
+
   ]
 })
 export class PagesModule { }

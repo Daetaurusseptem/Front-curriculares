@@ -13,6 +13,9 @@ import { UsuarioComponent } from "./mantenimientos/usuarios/usuario.component";
 import { MaestroComponent } from "./mantenimientos/maestros/maestro.component";
 import { CrearMateriaComponent } from "./mantenimientos/crear-materia/crear-materia.component";
 import { HorarioComponent } from "./mantenimientos/horario/horario.component";
+import { EventosComponent } from "./mantenimientos/eventos/eventos.component";
+import { CrearEventoComponent } from "./mantenimientos/crear-evento/crear-evento.component";
+import { EventoComponent } from "./mantenimientos/eventos/evento.component";
 
 
 const routes:Routes = [
@@ -21,7 +24,7 @@ const routes:Routes = [
         component:PagesComponent,
         canActivate:[AuthGuardGuard],
         children:[
-            { path: '', component: DashboardAdminComponent, data: {title: 'Dashboard'} },
+            { path: '', component: DashboardAdminComponent, data:{title: 'Dashboard'}},
             { path: 'alumnos', component: UsuariosComponent },
             { path: 'alumno/:id', component: UsuarioComponent },
             { path:'crear-maestro', component:CrearMaestroComponent},
@@ -32,6 +35,9 @@ const routes:Routes = [
             { path:'materias/crear-materia', component:CrearMateriaComponent},
             { path:'materia/:id', component:MateriaComponent},
             { path:'horarios/:id', component:HorarioComponent},
+            { path:'eventos', component:EventosComponent},
+            { path:'evento/:id', component:EventoComponent},
+            { path:'crear-evento', component:CrearEventoComponent},
         ]
     }
 ]

@@ -1,8 +1,23 @@
 {
+    "window.title": "Frontend Curriculares ⭐",
     "workbench.colorCustomizations": {
-        "activityBar.background": "#332E0D",
-        "titleBar.activeBackground": "#484012",
-        "titleBar.activeForeground": "#FBFAF1"
+        "activityBar.activeBackground": "#398b67",
+        "activityBar.activeBorder": "#653888",
+        "activityBar.background": "#398b67",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#653888",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "sash.hoverBorder": "#398b67",
+        "statusBar.background": "#2a674c",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#398b67",
+        "statusBarItem.remoteBackground": "#2a674c",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "titleBar.activeBackground": "#2a674c",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#2a674c99",
+        "titleBar.inactiveForeground": "#e7e7e799"
     },
-    "window.title": "Frontend Curriculares ⭐"
+    "peacock.color": "2A674C"
 }

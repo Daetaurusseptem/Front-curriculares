@@ -1,0 +1,221 @@
+<div class="row">
+  <div class="col-md-8">
+
+      <div class="card shadow mb-4">
+          <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Crear Evento</h6>
+          </div>
+          <div class="card-body">
+              <div class="p-5">
+                  <div class="text-center">
+                      <h1 class="h4 text-gray-900 mb-4">Crear Evento mediante un nombre, descripcion y fechas</h1>
+                  </div>
+                  <form
+                      class="user"
+                      id="registerMaestroForm"
+                      [formGroup]="crearEventoForm"
+                      (ngSubmit)="crearEvento()"
+                      >
+
+                      <div class="form-group row">
+
+                          <input type="text"
+                                 class="form-control"
+                                 placeholder="Nombre de el Evento"
+                                 formControlName="nombre"
+                                  >
+
+                      </div>
+                      <div class="form-group row">
+
+                              <textarea type="text"
+                              class="form-control"
+                              rows="3"
+                              placeholder="Descripciopn"
+                              formControlName="descripcion"
+                              ></textarea>
+
+                      </div>
+                      <label class="form-label">Realizador</label>
+                      <div class="form-group row">
+                        <select
+                               formControlName="realizador"
+                               class="form-control"
+                        >
+                          <option *ngFor="let maestro of maestros" [value]="maestro._id">{{maestro.role | titlecase}} {{maestro.nombre}} {{maestro.apellido1}} {{maestro.apellido2}}</option>
+                        </select>
+
+                      </div>
+
+                      <div id="Inicia">
+                        <label for="">Inicia:</label>
+
+                        <div class="p-4 border card">
+                          <div class="form-group ">
+                            <div class="row form-row">
+                              <label for="" class="mr-2">Año:</label>
+                              <select
+                                      formControlName='yearInicia'
+                                      >
+                                        <option *ngFor="let year of yearsAvailable" [value]="year">{{year}}</option>
+
+                              </select>
+                            </div>
+                            <hr>
+                            <div class="row form-row">
+
+                              <!-- *Mes Inicia  -->
+                              <label class="mr-2" for="">Mes</label>
+                              <select
+                                      class="mr-2"
+                                      formControlName='mesInicia'
+                              >
+                              <option *ngFor="let month of meses" [value]="month.numero">{{month.nombre}}</option>
+                            </select>
+
+                            <!-- *Dia Inicia  -->
+
+
+                                <label for="">Dia</label>
+                                <select
+                                        class="ml-2"
+                                        formControlName="diaInicia"
+                                          >
+
+                                  <option *ngFor="let dia of diasMesInicio" [value]="dia" >{{dia|digitoIndividual}}</option>
+
+                                </select>
+
+
+                            </div>
+                            <hr>
+                            <div class="row form-row">
+                              <!-- *Hora Inicia -->
+                              <label class="mr-2" for="">Hr</label>
+                              <select
+                                      class="mr-2"
+                                      formControlName='horaInicia'
+                                      >
+                                <option *ngFor="let hora of horas"[value]="hora">{{hora|digitoIndividual}}</option>
+
+                              </select>
+                              <!-- *Minutos Inicia -->
+                              <label for="">Min</label>
+                              <select
+                                      class="ml-2"
+                                      formControlName='minutoInicia'
+                                      >
+                                <option *ngFor="let minuto of minutos" [value]="minuto">{{minuto|digitoIndividual}}</option>
+                              </select>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+
+
+                      <!-- *Termina -->
+
+                      <div id="Termina">
+                        <label for="">Termina:</label>
+                        <div class="p-4 border card">
+                          <div class="form-group ">
+                            <div class="row form-row">
+                              <label for="" class="mr-2">Año:</label>
+                              <select
+                                      formControlName='yearTermina'
+                                      >
+                                        <option *ngFor="let year of yearsAvailable" [value]="year">{{year}}</option>
+
+                              </select>
+                            </div>
+                            <hr>
+                            <div class="row form-row">
+                              <!-- *Mes Termina -->
+                              <label class="mr-2" for="">mes</label>
+                              <select
+                                      class="mr-2"
+                                      formControlName='mesTermina'
+                                      >
+                                <option *ngFor="let month of meses" [value]="month.numero">{{month.nombre}}</option>
+                              </select>
+                              <!-- *Dia Termina -->
+                              <label for="">Dia</label>
+                              <select
+                                      class="ml-2"
+                                      formControlName='diaTermina'
+                                      >
+                                <option *ngFor="let dia of diasMesTermina" [value]="dia">{{dia|digitoIndividual}}</option>
+                              </select>
+
+                            </div>
+                            <hr>
+                            <div class="row form-row">
+                              <!-- *Hora Termina -->
+                              <label class="mr-2" for="">Hr</label>
+                              <select
+                                      class="mr-2"
+                                      formControlName='horaTermina'
+                                      >
+                                      id="">
+                                      <option *ngFor="let hora of horas" [value]="hora">{{hora|digitoIndividual}}</option>
+                              </select>
+                              <!-- *Minuto Termina -->
+                              <label for="">Min</label>
+                              <select
+                                      class="ml-2"
+                                      formControlName='minutoTermina'
+                                      >
+                                <option *ngFor="let minuto of minutos" [value]="minuto">{{minuto|digitoIndividual}}</option>
+                              </select>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                      <div *ngIf="crearEventoForm.invalid" style="font-size: .8rem;" class="card text-dark bg-white mb-4 mt-3" >
+                          <h6 class="text-center m-2 text-muted">Porfavor corrija</h6>
+                          <p class="p-2">
+                            <span *ngIf="campoNoValido('nombre')"><span class="text-danger">*</span>El nombre no es valido  </span>
+                            <span *ngIf="campoNoValido('descripcion')"><span class="text-danger">*</span>La descripcion no es valida  </span>
+                            <span *ngIf="campoNoValido('mesInicia')"><span class="text-danger">*</span>Ingrese Mes de inicio   </span>
+                            <span *ngIf="campoNoValido('diaInicia')"><span class="text-danger">*</span>Ingrese Dia de inicio  </span>
+                            <span *ngIf="campoNoValido('horaInicia')"><span class="text-danger">*</span>Ingrese Hora de inicio  </span>
+                            <span *ngIf="campoNoValido('minutoInicia')"><span class="text-danger">*</span>Ingrese Minuto de inicio  </span>
+                            <span *ngIf="campoNoValido('mesTermina')" ><span class="text-danger">*</span>Ingrese Mes que termina  </span>
+                            <span *ngIf="campoNoValido('diaTermina')"><span class="text-danger">*</span>Ingrese Dia que termina  </span>
+                            <span *ngIf="campoNoValido('horaTermina')"><span class="text-"danger>*</span>Ingrese Hora que termina  </span>
+                            <span *ngIf="campoNoValido('minutoTermina')"><span class="text-danger">*</span>Ingrese Minuto que termina  </span>
+                            <span *ngIf="campoNoValido('fechaValida')"><span class="text-danger">*</span>Fecha No Valida  </span>
+                            <span *ngIf="campoNoValido('yearInicia')"><span class="text-danger">*</span>Agregue un Año de Inicio</span>
+                            <span *ngIf="campoNoValido('yearTermina')"><span class="text-danger">*</span>Agregue un Año de Termino</span>
+
+                          </p>
+
+
+
+
+
+
+
+
+
+
+
+                      </div>
+                      <button [disabled]="crearEventoForm.invalid" class="btn btn-primary btn-user btn-block" type="submit">
+                          Crear Evento
+                      </button>
+
+                  </form>
+                  <hr>
+
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

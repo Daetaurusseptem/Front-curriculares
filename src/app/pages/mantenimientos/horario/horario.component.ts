@@ -64,7 +64,7 @@ export class HorarioComponent implements OnInit {
 
   guardarHorarioDia(){
     console.log(this.horariosForm);
-    const data ={ 
+    const data ={
       horaInicio:this.horariosForm.get('horaInicio').value,
       minutoInicio:this.horariosForm.get('minutoInicio').value,
       horaTermina:this.horariosForm.get('horaTermina').value,
@@ -78,23 +78,23 @@ export class HorarioComponent implements OnInit {
   }
 
   validarHoras(horaInicio: string, horaTermina: string, minInicio:string, minTermina:string ) {
-    
-    
+
+
     return ( formGroup: FormGroup ) => {
 
       const Inicio = formGroup.get(horaInicio);
       const Termina = formGroup.get(horaTermina);
       const InicioMin = formGroup.get(minInicio);
       const TerminaMin = formGroup.get(horaTermina);
-      
 
-      
-      if ( Inicio.value <= Termina.value) { 
+
+
+      if ( Inicio.value <= Termina.value) {
         Termina.setErrors(null);
       }else{
         Termina.setErrors({ horaNoValida: true });
       }
-      
+
 
     }
   }
