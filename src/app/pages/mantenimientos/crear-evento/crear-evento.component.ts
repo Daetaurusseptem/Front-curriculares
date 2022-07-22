@@ -134,7 +134,7 @@ export class CrearEventoComponent implements OnInit {
     const data={
       nombre:this.crearEventoForm.get('nombre').value,
       descripcion:this.crearEventoForm.get('descripcion').value,
-      realizador:this.crearEventoForm.get('realizador').value,
+      realizadores:this.crearEventoForm.get('realizador').value,
       horario:{
         empieza:inicio,
         termina:final

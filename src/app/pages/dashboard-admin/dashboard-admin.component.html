@@ -1,1 +1,40 @@
-<p>dashboard-admin works!</p>
+<div class="row mb-4">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-center">
+          <h4 class="card-title">Eventos Recientes</h4>
+        </div>
+        <!-- Card -->
+        <div *ngFor="let evento of eventos | slice:0:3" class="card mb-2">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3 text-center">
+                    <img class="card-img-top animated fadeIn m-2" style="height:9rem;width: 9rem;" [src]="evento.img | mostrarImagen:'evento'" alt="">
+              </div>
+              <div class="col-md-9 text-center">
+                <h5 class="card-title">{{evento.nombre}}</h5>
+                <p class="card-text">{{evento.descripcion|slice:0:40}}</p>
+                <p class="card-text"><small class="text-muted">Fecha: {{evento.horario.empieza | mostrarHoras}}</small></p>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-block" style="background-color: rgb(119, 129, 88);" [routerLink]="['ver-evento',evento._id]">Ir</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body text-center">
+        <div class="card-header mb-3">
+          <h4 class="card-title">Ultimas Actualizacions</h4>
+        </div>
+
+          <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Factividadesextraescolaresunipoli&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+
+      </div>
+    </div>
+  </div>
+</div>

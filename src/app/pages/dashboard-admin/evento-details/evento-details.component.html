@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<script src="./assets/vendor/popper/popper.min.js"></script>
+    <script>
+      $(function () {
+      $('[data-toggle="tooltip"]')
+      })
+    </script>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="project-info-box mt-0">
+                <h5>{{eventoSeleccionado.nombre}}</h5>
+                <p class="mb-0">{{eventoSeleccionado.descripcion}}</p>
+            </div><!-- / project-info-box -->
+
+            <div class="project-info-box">
+                <p><b>Fecha Inicio Evento:</b> El {{eventoSeleccionado.horario.empieza|mostrarHoras}}</p>
+                <p><b>Fecha Final Evento:</b> El {{eventoSeleccionado.horario.termina|mostrarHoras}}</p>
+                <p class="mb-0"><b>Budget:</b> $500</p>
+                <p><b>Realizadores
+                  <img class="avatar-realizador pointer mt-2 p-2" *ngFor="let realizador of eventoSeleccionado.realizadores"[src]="realizador.img|mostrarImagen:'usuario'"   alt="" data-toggle="tooltip" data-placement="top" [title]="realizador.nombre+' '+realizador.apellido1+' '+realizador.apellido2">
+                </b></p>
+
+            </div><!-- / project-info-box -->
+
+
+        </div><!-- / column -->
+
+        <div class="col-md-7">
+            <img [src]="eventoSeleccionado.img | mostrarImagen:'evento'"  alt="img-evento" class="rounded">
+            <div class="project-info-box">
+                <p><b>Categories:</b> Design, Illustration</p>
+                <p><b>Skills:</b> Illustrator</p>
+            </div><!-- / project-info-box -->
+        </div><!-- / column -->
+    </div>

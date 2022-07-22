@@ -62,7 +62,7 @@ export class MateriaComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.imgSubs.unsubscribe()
   }
-              
+
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params:any)=>{
@@ -77,8 +77,8 @@ export class MateriaComponent implements OnInit, OnDestroy {
         this.cargarMateria(this.idMateria);
 
       })
-      
-      
+
+
     })
   }
 
@@ -92,7 +92,7 @@ export class MateriaComponent implements OnInit, OnDestroy {
     })
   }
   //TODO Cargar asesores
-  
+
   guardarMateria(materia:materias){
    const data={
      nombre:this.materiaForm.get('nombre').value,
@@ -107,7 +107,7 @@ export class MateriaComponent implements OnInit, OnDestroy {
 
   eliminarInstructor(idUsuario:string){
     Swal.fire({
-      title:'Estas seguro?', 
+      title:'Estas seguro?',
       text:`eliminar a ${this.instructorSeleccionado.nombre}`,
       icon:'warning',
       showCancelButton:true,
@@ -118,7 +118,6 @@ export class MateriaComponent implements OnInit, OnDestroy {
       if(resp.isDenied || resp.isDismissed){
         return
       }
-      console.log('paso');
       this.materiasService.deleteInstructor(this.materia._id,idUsuario)
       .subscribe(resp=>{
         this.cargarMateria(this.materia._id);
@@ -134,7 +133,7 @@ export class MateriaComponent implements OnInit, OnDestroy {
     this.maestrosService.getMaestros()
     .subscribe(resp=>{
       var administradoresCompleto = resp.usuarios
-      
+
       var registrados = this.administradores.map(el=>el._id)
 
       var nuevos = administradoresCompleto.filter(e=>{
@@ -143,9 +142,9 @@ export class MateriaComponent implements OnInit, OnDestroy {
         }else{
           return JSON.stringify(e._id)
         }
-        
+
       })
-      
+
       this.maestrosDisponibles = nuevos
       console.log(this.maestrosDisponibles);
     })
@@ -171,7 +170,7 @@ export class MateriaComponent implements OnInit, OnDestroy {
         })
 
       }
-    }) 
+    })
   }
 
   mostrarimgModal(usuario: materias) {

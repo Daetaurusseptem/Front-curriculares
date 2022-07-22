@@ -2,7 +2,7 @@
     <div class="card-header py-3">
         <h2 class="m-0 font-weight-bold text-primary">Curriculares</h2>
         <h6 class="m-0 font-weight-bold text-muted">Total de curriculares: {{totalMaterias}}</h6>
-    </div>    
+    </div>
     <div class="card" *ngIf="!materias">
         <div class="spinner-border text-primary" role="status">
             <span class="sr-only">Loading...</span>
@@ -18,7 +18,6 @@
                         <th>Nombre</th>
                         <th>Administradores</th>
                         <th>Descripcion</th>
-                        <th>Horarios</th>
                         <th>Opciones</th>
 
                     </tr>
@@ -37,10 +36,7 @@
                             </ul>
                         </td>
                         <td>{{materia.descripcion}}</td>
-                        <td >
-                            <li *ngFor="let horario of horarios">{{horario.dia}}</li>
-                        </td>
-                        
+
                         <td>
                             <a (click)="eliminarMateria(materia)">
                                 <i class="fas fa-trash text-danger pointer" style="margin-right: 20px;"></i>
@@ -50,7 +46,7 @@
                             </a>
                         </td>
                     </tr>
-                    
+
                 </tbody>
             </table>
 

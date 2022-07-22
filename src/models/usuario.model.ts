@@ -6,6 +6,7 @@ export class Usuario {
         public nombre: string,
         public apellido1:string,
         public email: string,
+        public role: string,
         public cuatrimestre?:string,
         public carrera?:string,
         public matricula?:string,
@@ -15,7 +16,6 @@ export class Usuario {
         public password?: string,
         public img?: string,
         public google?: boolean,
-        public role?: string,
     ) {}
 
     // tslint:disable-next-line: typedef

@@ -26,6 +26,7 @@ import { MatInputModule } from '@angular/material/input';
 import { EventosComponent } from './mantenimientos/eventos/eventos.component';
 import { EventoComponent } from './mantenimientos/eventos/evento.component';
 import { CrearEventoComponent } from './mantenimientos/crear-evento/crear-evento.component';
+import { EventoDetailsComponent } from './dashboard-admin/evento-details/evento-details.component';
 
 
 
@@ -47,7 +48,8 @@ import { CrearEventoComponent } from './mantenimientos/crear-evento/crear-evento
     HorarioComponent,
     EventosComponent,
     EventoComponent,
-    CrearEventoComponent
+    CrearEventoComponent,
+    EventoDetailsComponent
   ],
   imports: [
     CommonModule,

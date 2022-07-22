@@ -42,7 +42,7 @@ export class MateriasComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
       }
-  
+
       ngOnDestroy(): void {
         this.imgSubs.unsubscribe()
       }
@@ -51,11 +51,11 @@ export class MateriasComponent implements OnInit, OnDestroy {
       this.materiasService.getMaterias()
       .subscribe(resp=>{
         this.materias = resp;
-        console.log(this.materias.length);
+        console.log(this.materias);
         this.totalMaterias = this.materias.length;
       })
     }
-  
+
     eliminarMateria(materia:materias){
       Swal.fire({
         title:'Estas Seguro?',
@@ -77,10 +77,10 @@ export class MateriasComponent implements OnInit, OnDestroy {
     }
     mostrarimgModal(usuario: materias) {
       this.imgModalService.abrirModal('materia', usuario._id, usuario.img);
-  
+
     }
 
- 
+
   }
-  
- 
+
+

@@ -4,6 +4,7 @@ import { Observable, of, tap } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Usuario } from 'src/models/usuario.model';
+import { menu } from '../interfaces/menu.insterface';
 import { RegisterForm } from '../interfaces/register-form.interface';
 
 const base_url=environment.baseUrl
@@ -12,7 +13,7 @@ const base_url=environment.baseUrl
   providedIn: 'root'
 })
 export class UsuarioService {
-  public usuario!:Usuario; 
+  public usuario!:Usuario;
   constructor(private http: HttpClient) { }
 
   login(formData:{email:string,password:string}){
@@ -28,7 +29,7 @@ export class UsuarioService {
     return this.http.get(`${ base_url }/auth/renew`, this.headers)
     .pipe(
       map( (resp: any) => {
-        
+
         const uid = resp.uid;
         const {nombre, email, apellido1, role, cuatrimestre='', carrera='', img= '', matricula, materia, apellido2, servicioSocial=null} = resp.usuario;
         this.usuario = new Usuario(uid, nombre, apellido1, email, cuatrimestre, carrera, matricula, materia, servicioSocial, apellido2, '', img, undefined, role );
@@ -49,7 +50,7 @@ export class UsuarioService {
     );
   }
 
-  
+
 
   deleteUser(uid:String){
     return this.http.delete(`${base_url}/usuarios/${uid}`)
@@ -66,7 +67,7 @@ export class UsuarioService {
   get token(): string{
     return localStorage.getItem('token') || '';
   }
-  // get role():'ADMIN_ROLE'|'USER_ROLE'{
+  // get role():'admin'|'maestro'|'alumno'{
   //   return this.usuario.role
   // }
 
@@ -74,9 +75,11 @@ export class UsuarioService {
   //   return this.usuario.uid || '';
   // }
   guardarLocalStorage(token:string, menu:any){
+    var a = JSON.stringify(menu)
+    console.log(a);
     localStorage.setItem('token', token );
-    localStorage.setItem('menu', JSON.stringify(menu) );
-  }
+    localStorage.setItem('menu', a );
+}
   borrarLocalStorage(){
     localStorage.removeItem('token');
     localStorage.removeItem('menu');

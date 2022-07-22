@@ -15,6 +15,11 @@ import {materias } from '../../interfaces/materiasSimple.interface';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styles: [
+
+    `.gradient-custom-3{
+      background: rgb(117,157,1);
+    background: linear-gradient(90deg, rgba(117,157,1,0.4990371148459384) 0%, rgba(117,157,1,1) 100%);
+    }`
   ]
 })
 export class RegisterComponent implements OnInit {
@@ -36,7 +41,7 @@ export class RegisterComponent implements OnInit {
   {
     validators:this.passwordsIguales('password','password2')}
   )
-  
+
   materias:materias[]=[];
   constructor(
               private fb:FormBuilder,
@@ -45,7 +50,7 @@ export class RegisterComponent implements OnInit {
               private materiasService : MateriasService
               ) {
                 this.cargarMaterias()
-                 
+
                }
 
   ngOnInit(): void {
@@ -78,8 +83,8 @@ export class RegisterComponent implements OnInit {
               Swal.fire({
                 title:'Alumno creado'
               })
-              
-                this.router.navigateByUrl('/')              
+
+                this.router.navigateByUrl('/')
             }
           )
       },

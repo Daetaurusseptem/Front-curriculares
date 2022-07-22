@@ -1,4 +1,4 @@
-<div class="bg-gradient-primary">
+<div class="gradient-custom-3">
 
     <div class="container">
 
@@ -15,11 +15,11 @@
 
                                 <div style="padding-bottom: 10px;">
                                     *Obligatorio
-                                   
-                                </div>
-                            
 
-                            <form 
+                                </div>
+
+
+                            <form
                                 class="user"
                                 id="registerForm"
                                 [formGroup]="registerForm"
@@ -27,43 +27,43 @@
                             >
                             <!-- Nombre -->
                                 <div class="form-group row">
-                                    
-                                        <input 
-                                        type="text" 
-                                        class="form-control form-control-user" 
+
+                                        <input
+                                        type="text"
+                                        class="form-control form-control-user"
                                         placeholder="*Nombre completo"
                                         formControlName="nombre"
                                         >
-                                   
+
                                 </div>
 
-                                
+
                                 <!-- Apellidos -->
-                                
+
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input 
-                                            type="text" 
-                                            class="form-control form-control-user" 
+                                        <input
+                                            type="text"
+                                            class="form-control form-control-user"
                                             placeholder="*Primer apellido"
                                             formControlName="apellido1">
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input 
-                                            type="text" 
-                                            class="form-control form-control-user" 
+                                        <input
+                                            type="text"
+                                            class="form-control form-control-user"
                                             placeholder="Segundo apellido"
                                             formControlName="apellido2">
                                     </div>
-                
+
                                 </div>
-                                    
+
                                 <!-- MATRICULA -->
                                 <div class="form-group row">
-                                   
-                                        <input 
-                                        type="text" 
-                                        class="form-control form-control-user" 
+
+                                        <input
+                                        type="text"
+                                        class="form-control form-control-user"
                                         placeholder="Ingresa tu matricula"
                                         formControlName="matricula"
                                         >
@@ -72,17 +72,17 @@
 
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <select  
+                                        <select
                                                class="form-control rounded-pill"
                                                formControlName="materia"
                                                >
                                             <option value="null" disabled="true" [selected]="true">Selecciona un co-curricular</option>
                                             <option *ngFor="let materia of materias" [value]="materia._id">{{materia.nombre}}</option>
-                                            
+
                                         </select>
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <select  
+                                        <select
                                                class="form-control rounded-pill"
                                                formControlName="cuatrimestre"
                                                >
@@ -103,7 +103,7 @@
 
                                     </div>
                                     <div class="form-group row">
-                                        <select  
+                                        <select
                                         class="form-control rounded-pill"
                                         formControlName="carrera"
                                         >
@@ -120,9 +120,9 @@
 
                                 <!-- EMAIL -->
                                 <div class="form-group">
-                                    <input 
-                                        type="email" 
-                                        class="form-control form-control-user" 
+                                    <input
+                                        type="email"
+                                        class="form-control form-control-user"
                                         id="exampleInputEmail"
                                         placeholder="Correo electronico"
                                         formControlName="email"
@@ -133,20 +133,20 @@
 
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input 
-                                            type="password" 
+                                        <input
+                                            type="password"
                                             class="form-control form-control-user"
                                             placeholder="Password"
                                             formControlName="password"
                                         >
                                     </div>
                                     <div class="col-sm-6">
-                                        <input 
-                                            type="password" 
+                                        <input
+                                            type="password"
                                             class="form-control form-control-user"
                                             placeholder="Repeat Password"
                                             formControlName="password2"
-                                        
+
                                         >
                                     </div>
                                 </div>
@@ -158,17 +158,17 @@
                                     <p *ngIf="campoNoValido('cuatrimestre')" class="text-danger">cuatrimestre invalida</p>
                                     <p *ngIf="campoNoValido('materia')" class="text-danger">materia invalida</p>
                                     <p *ngIf="contrasenasNoValidas()" class="text-danger">las contrasenas deben coincidir</p>
-                                    
-                                    
+
+
 
                                     <p *ngIf="contrasenasNoValidas()" class="text-danger">contrasenas invalidas</p>
                                 </div>
-                                <button class="btn btn-primary btn-user btn-block" type="submit">
+                                <button class="btn btn-success gradient-custom-3 btn-user btn-block" type="submit">
                                     registrarse
                                 </button>
-                                
-                             
-                              
+
+
+
                             </form>
                             <hr>
                             <div class="text-center">

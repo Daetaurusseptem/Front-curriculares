@@ -16,6 +16,7 @@ import { HorarioComponent } from "./mantenimientos/horario/horario.component";
 import { EventosComponent } from "./mantenimientos/eventos/eventos.component";
 import { CrearEventoComponent } from "./mantenimientos/crear-evento/crear-evento.component";
 import { EventoComponent } from "./mantenimientos/eventos/evento.component";
+import { EventoDetailsComponent } from "./dashboard-admin/evento-details/evento-details.component";
 
 
 const routes:Routes = [
@@ -25,6 +26,7 @@ const routes:Routes = [
         canActivate:[AuthGuardGuard],
         children:[
             { path: '', component: DashboardAdminComponent, data:{title: 'Dashboard'}},
+            //*Mantenimientos
             { path: 'alumnos', component: UsuariosComponent },
             { path: 'alumno/:id', component: UsuarioComponent },
             { path:'crear-maestro', component:CrearMaestroComponent},
@@ -38,6 +40,9 @@ const routes:Routes = [
             { path:'eventos', component:EventosComponent},
             { path:'evento/:id', component:EventoComponent},
             { path:'crear-evento', component:CrearEventoComponent},
+            //General
+            { path:'ver-evento/:id', component:EventoDetailsComponent},
+
         ]
     }
 ]
