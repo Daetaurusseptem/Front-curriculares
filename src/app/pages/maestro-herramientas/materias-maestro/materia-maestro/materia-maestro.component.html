@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<script src="./assets/vendor/popper/popper.min.js"></script>
+    <script>
+      $(function () {
+      $('[data-toggle="tooltip"]')
+      })
+    </script>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="project-info-box mt-0">
+                <h5>{{materia?.nombre}}</h5>
+                <p class="mb-0">{{materia?.descripcion}}</p>
+            </div><!-- / project-info-box -->
+
+            <div class="project-info-box">
+                <p *ngFor="let horario of materia?.horarios">{{horario.dia}} {{horario.empiezaHora|digitoIndividual}}:{{horario.empiezaMinuto|digitoIndividual}} - {{horario.terminaHora|digitoIndividual}}:{{horario.terminaMinuto|digitoIndividual}}</p>
+                <p><b>Instructores
+                  <img class="avatar-realizador pointer mt-2 p-2" *ngFor="let a of materia?.administradores"[src]="a?.img|mostrarImagen:'usuario'"   alt="" data-toggle="tooltip" data-placement="top" [title]="a.nombre+' '+a.apellido1+' '+a.apellido2">
+                </b></p>
+                <a class="btn btn-primary btn-block" [routerLink]="['/dashboard/lista-materia',id]" style="background-color: rgb(119, 129,88)">Ver alumnos</a>
+                <a class="btn btn-primary btn-block" [routerLink]="['/dashboard/lista-asistencias',id]"  style="background-color: rgb(119, 129,88)">Ver Asistencias</a>
+            </div><!-- / project-info-box -->
+
+
+        </div><!-- / column -->
+
+        <div class="col-md-7">
+            <div class="img-card">
+
+              <img [src]="materia.img | mostrarImagen:'materia'"  alt="img-evento" class="rounded img-details">
+            </div>
+
+        </div><!-- / column -->
+    </div>

@@ -24,26 +24,8 @@ const routes:Routes = [
         path:'dashboard',
         component:PagesComponent,
         canActivate:[AuthGuardGuard],
-        children:[
-            { path: '', component: DashboardAdminComponent, data:{title: 'Dashboard'}},
-            //*Mantenimientos
-            { path: 'alumnos', component: UsuariosComponent },
-            { path: 'alumno/:id', component: UsuarioComponent },
-            { path:'crear-maestro', component:CrearMaestroComponent},
-            { path: 'maestros', component: MaestrosComponent },
-            { path: 'maestro/:id', component: MaestroComponent },
-            { path:'materias-maestros', component:MateriasMaestroComponent},
-            { path:'materias', component:MateriasComponent},
-            { path:'materias/crear-materia', component:CrearMateriaComponent},
-            { path:'materia/:id', component:MateriaComponent},
-            { path:'horarios/:id', component:HorarioComponent},
-            { path:'eventos', component:EventosComponent},
-            { path:'evento/:id', component:EventoComponent},
-            { path:'crear-evento', component:CrearEventoComponent},
-            //General
-            { path:'ver-evento/:id', component:EventoDetailsComponent},
-
-        ]
+        canLoad:[AuthGuardGuard],
+        loadChildren:()=>import('./child-routes.module').then(m=>m.ChildRoutesModule)
     }
 ]
 

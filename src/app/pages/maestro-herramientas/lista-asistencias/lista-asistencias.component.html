@@ -1,0 +1,31 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+      <h2 class="m-0 font-weight-bold text-primary">{{mesActual|verMes}} - Ciclo {{mesActual| verCiclo}} -{{yearActual}}</h2>
+  </div>
+
+
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+              <th>Alumno</th>
+              <th *ngFor="let dia of diasMes">{{dia}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let alumno of alumnos">
+              <td>{{alumno.nombre}} {{alumno.apellido1}} {{alumno.apellido2}}</td>
+              <td *ngFor="let dia of diasMes">
+                <input
+                      type="checkbox"
+                      (change)="agregarAsistencia(dia, mesActual)"
+                      >
+              </td>
+        </tr>
+      </tbody>
+      </table>
+
+    </div>
+
+  </div>

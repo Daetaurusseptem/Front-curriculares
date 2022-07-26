@@ -13,7 +13,7 @@ const url_base = environment.baseUrl;
 export class MateriasService {
 
   constructor(private http: HttpClient) { }
-  
+
   crearMateria(materiaForm:{nombre:string,descripcion:string}){
     console.log('front end materia form service'+materiaForm.nombre);
     return this.http.post<{ok:boolean, materia:materias}>(`${url_base}/materias`, materiaForm, this.headers)
@@ -23,7 +23,10 @@ export class MateriasService {
   deleteInstructor(idMateria:string, idUsuario:string){
     return this.http.delete(`${url_base}/materias/${idMateria}/${idUsuario}`, this.headers)
   }
- 
+  deleteAlumno(idMateria:string, idUsuario:string){
+    return this.http.delete(`${url_base}/materias/eliminar-inscrito/${idMateria}/${idUsuario}`, this.headers)
+  }
+
   updateMateria(id:string ,materia:{nombre:string, descripcion:string}){
     return this.http.put(`${url_base}/materias/${id}`, {materia:materia}, this.headers)
   }
@@ -37,19 +40,28 @@ export class MateriasService {
     )
   }
   getMateria(id:string){
+    return this.http.get<{ok:boolean, materia:materias}>(`${url_base}/materias/${id}`, this.headers)
+    .pipe(
+      map(item=>{
+        return item.materia
+      })
+    )
+
+  }
+  getMateriaAlumnos(id:string){
     return this.http.get<{ok:boolean, materia:materias}>(`${url_base}/materias/${id}`)
     .pipe(
       map(item=>{
         return item.materia
       })
     )
-    
+
   }
 
   addUser(materiaId:string, alumnoId:string){
     return this.http.put(`${url_base}/materias/alumno/${alumnoId}/${materiaId}`,{}, this.headers)
   }
-  
+
   deleteMateria(id:string){
     return this.http.delete(`${url_base}/materias/${id}`,this.headers)
   }

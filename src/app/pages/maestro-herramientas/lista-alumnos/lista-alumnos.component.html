@@ -13,15 +13,11 @@
   </div>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h2 class="m-0 font-weight-bold text-primary">Alumnos</h2>
-        <h6 class="m-0 font-weight-bold text-muted">Total de alumnos: {{totalUsuarios}}</h6>
+        <h2 class="m-0 font-weight-bold text-primary">Alumnos Inscritos</h2>
+        <h6 class="m-0 font-weight-bold text-muted">Total de alumnos: {{alumnos?.length}}</h6>
     </div>
 
-    <div class="card" *ngIf="cargando">
-        <div class="spinner-border text-primary" role="status">
-            <span class="sr-only">Loading...</span>
-          </div>
-    </div>
+
 
     <div class="card-body">
         <div class="table-responsive">
@@ -36,7 +32,6 @@
                         <th>Cuatrimestre</th>
                         <th>Carrera</th>
                         <th>matricula</th>
-                        <th>Extra Curricular</th>
                         <th>Opciones</th>
 
                     </tr>
@@ -53,11 +48,11 @@
                         <td>{{alumno.email}}</td>
                         <td>{{alumno.cuatrimestre}}</td>
                         <td>{{alumno.carrera}}</td>
-                        <td>{{alumno.matricula}}</td>
-                        <td *ngIf="alumno.materia">{{alumno.materia.nombre|| ''}}</td>
+                        <td *ngIf="!alumno.matricula">Induccion</td>
+                        <td *ngIf="alumno.matricula">{{alumno.matricula}}</td>
                         <td *ngIf="!alumno.materia">*</td>
                         <td>
-                            <a (click)="eliminarAlumno(alumno)">
+                            <a (click)="eliminarAlumnoMateria(alumno._id)">
                                 <i class="fas fa-trash text-danger pointer" style="margin-right: 20px;"></i>
                             </a>
                             <a [routerLink]="['/dashboard/alumno',alumno._id]">
@@ -69,11 +64,6 @@
 
                 </tbody>
             </table>
-            <div>
-                <button class="btn btn-secondary" (click)="cambiarPagina(-5)" >Anterior</button>
-                &nbsp;
-                <button class="btn btn-secondary" (click)="cambiarPagina(5)" >Siguiente</button>
-            </div>
         </div>
     </div>
 </div>

@@ -27,6 +27,9 @@ import { EventosComponent } from './mantenimientos/eventos/eventos.component';
 import { EventoComponent } from './mantenimientos/eventos/evento.component';
 import { CrearEventoComponent } from './mantenimientos/crear-evento/crear-evento.component';
 import { EventoDetailsComponent } from './dashboard-admin/evento-details/evento-details.component';
+import { MateriaMaestroComponent } from './maestro-herramientas/materias-maestro/materia-maestro/materia-maestro.component';
+import { ListaAlumnosComponent } from './maestro-herramientas/lista-alumnos/lista-alumnos.component';
+import { ListaAsistenciasComponent } from './maestro-herramientas/lista-asistencias/lista-asistencias.component';
 
 
 
@@ -49,7 +52,10 @@ import { EventoDetailsComponent } from './dashboard-admin/evento-details/evento-
     EventosComponent,
     EventoComponent,
     CrearEventoComponent,
-    EventoDetailsComponent
+    EventoDetailsComponent,
+    MateriaMaestroComponent,
+    ListaAlumnosComponent,
+    ListaAsistenciasComponent
   ],
   imports: [
     CommonModule,

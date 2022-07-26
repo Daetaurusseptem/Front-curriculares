@@ -9,6 +9,7 @@ import { Usuario } from 'src/models/usuario.model';
 import { ImgModalServiceService } from 'src/app/services/img-modal-service.service';
 import { Subscription } from 'rxjs';
 import { MateriasService } from 'src/app/services/materias.service';
+import { BusquedaService } from 'src/app/services/busqueda.service';
 
 
 @Component({
@@ -22,15 +23,16 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   desde=0;
   cargando=false;
   totalUsuarios:number;
-  usuariosTemp:alumno[];
+  alumnosTemp!:alumno[];
   private imgSubs: Subscription;
 
   constructor(
     private alumnosService:AlumnosService,
     private usuarioService:UsuarioService,
     private imgModalService:ImgModalServiceService,
-    private materiaService:MateriasService
-    ) { 
+    private materiaService:MateriasService,
+    private busquedaService:BusquedaService
+    ) {
       this.cargarUsuarios();
       this.imgSubs = this.imgSubs = this.imgModalService.nuevaImagen
       .pipe(
@@ -43,7 +45,7 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-  
+
     this.imgSubs.unsubscribe()
   }
 
@@ -66,7 +68,7 @@ export class UsuariosComponent implements OnInit, OnDestroy {
       .subscribe(({ usuarios, total }) => {
         this.totalUsuarios = total
         this.alumnos = usuarios;
-        this.usuariosTemp = usuarios;
+        this.alumnosTemp = usuarios;
         this.cargando = false;
       });
   }
@@ -80,8 +82,9 @@ export class UsuariosComponent implements OnInit, OnDestroy {
       })
     )
     .subscribe(resp=>{
-      
+
       this.alumnos = resp
+      this.alumnosTemp = resp
       console.log(this.alumnos);
     })
   }
@@ -118,5 +121,20 @@ export class UsuariosComponent implements OnInit, OnDestroy {
     )
 
 
+  }
+
+
+  buscar(termino: string): any{
+    //si la busqueda es 0 los usuarios guardados en usuarios temp se asignan de nuevo
+    if (termino.length === 0 ){
+      this.alumnos = [...this.alumnosTemp];
+      return;
+    }
+
+    this.busquedaService.buscar('alumnos', termino)
+    .subscribe( (resultados: any[]) => {
+      console.log(resultados);
+      this.alumnos = resultados;
+    });
   }
 }

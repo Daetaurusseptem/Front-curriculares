@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment.prod';
 import { maestrosResponse } from '../interfaces/maestroResponse.interface';
 import { maestro } from '../interfaces/maestro.interface';
 import { usuarioCreadoResponse } from '../interfaces/usuarioCreadoResponse.interface';
+import { materias } from '../interfaces/materiasSimple.interface';
 
 const urlBase = environment.baseUrl
 @Injectable({
@@ -14,10 +15,10 @@ export class MaestrosService {
 
   constructor(private http:HttpClient) { }
 
-  
+
 
    crearMaestro(formData:maestro){
-    
+
     let nuevoUsuario={
       nombre:formData.nombre,
       apellido1:formData.apellido1,
@@ -27,11 +28,11 @@ export class MaestrosService {
       role:'maestro'
     }
     return this.http.post<usuarioCreadoResponse>(`${urlBase}/usuarios/maestro`, nuevoUsuario, this.headers)
-    
-    
-   
+
+
+
   }
-  
+
 
   updateAlumno(maestro:maestro, id:string){
     return this.http.put(`${urlBase}/alumnos/${id}`, maestro, this.headers)
@@ -40,7 +41,7 @@ export class MaestrosService {
   addMaestroMateria(materiaId:string, idUsuario:string ){
     const administradores = idUsuario
     return this.http.put(`${urlBase}/materias/actualizarAdmin/${materiaId}`, {'administradores':administradores}, this.headers)
-    
+
   }
 
   getMaestros(desde: number = 0){
@@ -53,6 +54,14 @@ export class MaestrosService {
               return item.maestro
             })
            )
+  }
+  getMateriasMaestro(idMaestro:string){
+    return this.http.get<{ok:boolean, materias:materias[]}>(`${urlBase}/materias/materias-maestro/${idMaestro}`, this.headers)
+    .pipe(
+      map(item=>{
+        return item.materias
+      })
+    )
   }
 
   get headers(): object{

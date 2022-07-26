@@ -2,11 +2,11 @@
 export class Usuario {
 
     constructor(
-        public id: string,
+        public _id: string,
         public nombre: string,
         public apellido1:string,
         public email: string,
-        public role: string,
+        public role: 'admin'|'maestro'|'alumno',
         public cuatrimestre?:string,
         public carrera?:string,
         public matricula?:string,

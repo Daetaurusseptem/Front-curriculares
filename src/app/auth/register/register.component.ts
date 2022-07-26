@@ -33,13 +33,13 @@ export class RegisterComponent implements OnInit {
     materia:[null,Validators.required],
     carrera:[null, [Validators.required]],
     email:['', [Validators.email, Validators.required]],
-    matricula:['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[0-9]*$')]],
+    matricula:[{value:'', disabled:false}, [Validators.required,Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[0-9]*$')]],
     password:['', [Validators.required]],
     password2:['', [Validators.required]]
 
   },
   {
-    validators:this.passwordsIguales('password','password2')}
+    validators:[this.passwordsIguales('password','password2')]}
   )
 
   materias:materias[]=[];
@@ -54,6 +54,19 @@ export class RegisterComponent implements OnInit {
                }
 
   ngOnInit(): void {
+    this.registerForm.get('cuatrimestre').valueChanges
+    .subscribe(resp=>{
+
+      if(resp==0){
+
+        this.registerForm.get('matricula').removeValidators([Validators.required,Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[0-9]*$')])
+        this.registerForm.get('matricula').disable()
+      }else{
+        this.registerForm.get('matricula').addValidators([Validators.required,Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[0-9]*$')])
+        this.registerForm.get('matricula').enable()
+      }
+
+    })
   }
 
   cargarMaterias(){
@@ -133,4 +146,8 @@ export class RegisterComponent implements OnInit {
 
     }
   }
+
+
+
+
 }

@@ -15,21 +15,17 @@
             <div class="project-info-box">
                 <p><b>Fecha Inicio Evento:</b> El {{eventoSeleccionado.horario.empieza|mostrarHoras}}</p>
                 <p><b>Fecha Final Evento:</b> El {{eventoSeleccionado.horario.termina|mostrarHoras}}</p>
-                <p class="mb-0"><b>Budget:</b> $500</p>
                 <p><b>Realizadores
                   <img class="avatar-realizador pointer mt-2 p-2" *ngFor="let realizador of eventoSeleccionado.realizadores"[src]="realizador.img|mostrarImagen:'usuario'"   alt="" data-toggle="tooltip" data-placement="top" [title]="realizador.nombre+' '+realizador.apellido1+' '+realizador.apellido2">
                 </b></p>
-
+                <a class="btn btn-success btn-block"  style="background-color: rgb(119, 129,88)">Ire</a>
             </div><!-- / project-info-box -->
 
 
         </div><!-- / column -->
 
         <div class="col-md-7">
-            <img [src]="eventoSeleccionado.img | mostrarImagen:'evento'"  alt="img-evento" class="rounded">
-            <div class="project-info-box">
-                <p><b>Categories:</b> Design, Illustration</p>
-                <p><b>Skills:</b> Illustrator</p>
-            </div><!-- / project-info-box -->
+            <img [src]="eventoSeleccionado.img | mostrarImagen:'evento'"  alt="img-evento" class="img-avatar rounded">
+
         </div><!-- / column -->
     </div>

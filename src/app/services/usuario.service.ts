@@ -32,7 +32,7 @@ export class UsuarioService {
 
         const uid = resp.uid;
         const {nombre, email, apellido1, role, cuatrimestre='', carrera='', img= '', matricula, materia, apellido2, servicioSocial=null} = resp.usuario;
-        this.usuario = new Usuario(uid, nombre, apellido1, email, cuatrimestre, carrera, matricula, materia, servicioSocial, apellido2, '', img, undefined, role );
+        this.usuario = new Usuario(uid, nombre, apellido1, email, role, cuatrimestre, carrera, matricula, materia, servicioSocial, apellido2, '', img, undefined);
         this.guardarLocalStorage(resp.token, resp.menu)
         return true;
       }),
@@ -67,9 +67,9 @@ export class UsuarioService {
   get token(): string{
     return localStorage.getItem('token') || '';
   }
-  // get role():'admin'|'maestro'|'alumno'{
-  //   return this.usuario.role
-  // }
+   get role():'admin'|'maestro'|'alumno'{
+     return this.usuario.role
+   }
 
   // get uid(): string{
   //   return this.usuario.uid || '';

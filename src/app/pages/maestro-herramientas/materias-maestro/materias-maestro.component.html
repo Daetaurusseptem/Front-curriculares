@@ -1,1 +1,41 @@
-<p>materias-maestro works!</p>
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+      <h2 class="m-0 font-weight-bold text-primary">Mis materias</h2>
+  </div>
+  <div class="card" *ngIf="!this.materias">
+      <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+  </div>
+
+  <div class="card-body">
+      <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                  <th>Foto</th>
+                  <th>Nombre</th>
+                  <th>Descripcion</th>
+                  <th>Opciones</th>
+
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let materia of materias">
+                  <td (click)="mostrarimgModal(materia)" class="selector">
+                      <img class="card-img-top animated fadeIn" [src]="materia.img | mostrarImagen:'materia'" class="avatar" alt="">
+                  </td>
+                  <td>{{materia.nombre}}</td>
+                  <td>{{materia.descripcion}}</td>
+                  <td>
+                    <a [routerLink]="['/dashboard/materias-maestro',materia._id]" class="btn btn-primary">Entrar</a>
+                  </td>
+
+              </tr>
+
+          </tbody>
+          </table>
+
+      </div>
+  </div>
+</div>

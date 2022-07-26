@@ -5,7 +5,7 @@
                 <div>
                     <h4 class="card-title">Actualizar Alumno</h4>
                 </div>
-                
+
                 <form [formGroup]="alumnoForm" action="" class="form-group">
                     <!-- <label >Gestionar Instructores</label>
                     <select formControlName="id" class="form-control" id="exampleFormControlSelect2">
@@ -14,7 +14,7 @@
                       </select> -->
                 </form>
                 <form class="form p-t-20" [formGroup]="alumnoForm">
-                     
+
                      <div class="form-group row">
                          <div class="col-sm-9">
                              <label for="" >Foto</label>
@@ -29,20 +29,20 @@
                     <div class="form-group">
                         <label for="exampleInputuname">Nombre</label>
                         <div class="input-group">
-                            <input 
-                            type="text" 
+                            <input
+                            type="text"
                             class="form-control"
                             formControlName="nombre"
                             [value]="alumnoSeleccionado?.nombre"
                             >
-                            
+
                         </div>
                         <div class="form-group">
                             <label for="exampleInputuname">Primer Apellido</label>
                             <div class="input-group">
-                                <input 
-                                      type="text" 
-                                      class="form-control" 
+                                <input
+                                      type="text"
+                                      class="form-control"
                                       placeholder="Nombre completo"
                                       formControlName="apellido1"
                                       [value]="alumnoSeleccionado?.apellido1"
@@ -52,9 +52,9 @@
                         <div *ngIf="alumnoSeleccionado?.apellido2"class="form-group">
                             <label for="exampleInputuname">Segundo Apellido</label>
                             <div class="input-group">
-                                <input 
-                                      type="text" 
-                                      class="form-control" 
+                                <input
+                                      type="text"
+                                      class="form-control"
                                       placeholder="Nombre completo"
                                       formControlName="apellido1"
                                       [value]="alumnoSeleccionado?.apellido2"
@@ -66,9 +66,9 @@
                         <div class="form-group">
                             <label for="exampleInputuname">Matricula</label>
                             <div class="input-group">
-                                <input 
-                                      type="text" 
-                                      class="form-control" 
+                                <input
+                                      type="text"
+                                      class="form-control"
                                       placeholder="Nombre completo"
                                       formControlName="matricula"
                                       [value]="alumnoSeleccionado?.matricula"
@@ -79,9 +79,9 @@
                         <div class="form-group">
                             <label for="exampleInputuname">Correo Electronico</label>
                             <div class="input-group">
-                                <input 
-                                      type="text" 
-                                      class="form-control" 
+                                <input
+                                      type="text"
+                                      class="form-control"
                                       placeholder="Nombre completo"
                                       formControlName="email"
                                       [value]="alumnoSeleccionado?.email"
@@ -89,25 +89,25 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputuname">Materia</label>
+                            <label for="exampleInputuname">Extra Curricular</label>
                             <div class="input-group">
-                                <select 
-                                      type="text" 
-                                      class="form-control" 
+                                <select
+                                      type="text"
+                                      class="form-control"
                                       placeholder="Nombre completo"
                                       formControlName="materia"
                                       >
                                       <option *ngFor="let materia of materias" [value]="materia._id" >{{materia.nombre}}</option>
-                                
+
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputuname">Cuatrimestre</label>
                             <div class="input-group">
-                                <input 
-                                      type="text" 
-                                      class="form-control" 
+                                <input
+                                      type="text"
+                                      class="form-control"
                                       placeholder="Nombre completo"
                                       formControlName="cuatrimestre"
                                       [value]="alumnoSeleccionado?.cuatrimestre"
@@ -117,7 +117,7 @@
                         <div class="form-group">
                             <label for="exampleInputuname">Carrera</label>
                             <div class="input-group">
-                                <select  
+                                <select
                                         class="form-control"
                                         formControlName="carrera"
                                         [value]="alumnoSeleccionado?.carrera"
@@ -132,9 +132,9 @@
                                         </select>
                             </div>
                         </div>
-                        
-                        <button 
-                        type="submit" 
+
+                        <button
+                        type="submit"
                         class="btn btn-success waves-effect waves-light m-r-10"
                         (click)="guardarAlumno()"
                         [disabled]="alumnoForm.invalid"
@@ -144,4 +144,3 @@
                     </button>
 
                 </form>
-            

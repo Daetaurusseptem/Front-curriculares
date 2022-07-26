@@ -1,4 +1,5 @@
 import { administrador } from "./administradores.interface"
+import { alumno } from "./alumno.interface"
 import { Horario } from "./horario.interface"
 
 export interface materias{
@@ -7,7 +8,8 @@ export interface materias{
     descripcion:string,
     horarios:Horario[]
     img:string
-        administradores:[
+    administradores:[
            administrador
-        ]
+        ],
+    inscritos:[alumno]
 }
