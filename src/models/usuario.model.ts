@@ -16,6 +16,11 @@ export class Usuario {
         public password?: string,
         public img?: string,
         public google?: boolean,
+        public asistencias?: [{
+          fecha:Date,
+          asistio:Boolean
+        }],
+
     ) {}
 
     // tslint:disable-next-line: typedef

@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
+import { AsistenciaAlumnoResponse } from '../interfaces/asistenciasAlumnoResponse.interface';
 import { materiasResponse } from '../interfaces/materias.interface';
+import { materiasAsistencias } from '../interfaces/materiasConAsistencias.interface copy';
 import { materias } from '../interfaces/materiasSimple.interface';
 
 const url_base = environment.baseUrl;
@@ -19,13 +21,16 @@ export class MateriasService {
     return this.http.post<{ok:boolean, materia:materias}>(`${url_base}/materias`, materiaForm, this.headers)
   }
 
-
   deleteInstructor(idMateria:string, idUsuario:string){
     return this.http.delete(`${url_base}/materias/${idMateria}/${idUsuario}`, this.headers)
   }
   deleteAlumno(idMateria:string, idUsuario:string){
     return this.http.delete(`${url_base}/materias/eliminar-inscrito/${idMateria}/${idUsuario}`, this.headers)
   }
+
+
+
+
 
   updateMateria(id:string ,materia:{nombre:string, descripcion:string}){
     return this.http.put(`${url_base}/materias/${id}`, {materia:materia}, this.headers)
@@ -40,7 +45,7 @@ export class MateriasService {
     )
   }
   getMateria(id:string){
-    return this.http.get<{ok:boolean, materia:materias}>(`${url_base}/materias/${id}`, this.headers)
+    return this.http.get<{ok:boolean, materia:materiasAsistencias}>(`${url_base}/materias/${id}`, this.headers)
     .pipe(
       map(item=>{
         return item.materia
@@ -48,6 +53,22 @@ export class MateriasService {
     )
 
   }
+
+
+  getMateriaAsistencia(id:string){
+    return this.http.get<AsistenciaAlumnoResponse>(`${url_base}/materias/asistencia/${id}`,this.headers)
+    .pipe(
+      map(item=>{return item.asistencias[0].asistencias})
+    )
+  }
+
+
+  getMateriaAsistenciaDia(id:string, dia:number, mes:number){
+    return this.http.get<{asistencia:boolean}>(`${url_base}/materias/asistencia/${id}?mes=${mes}&dia=${dia}`,this.headers)
+
+
+  }
+
   getMateriaAlumnos(id:string){
     return this.http.get<{ok:boolean, materia:materias}>(`${url_base}/materias/${id}`)
     .pipe(
@@ -59,7 +80,7 @@ export class MateriasService {
   }
 
   addUser(materiaId:string, alumnoId:string){
-    return this.http.put(`${url_base}/materias/alumno/${alumnoId}/${materiaId}`,{}, this.headers)
+    return this.http.put(`${url_base}/materias/alumno/${alumnoId}/${materiaId}`,{_id:alumnoId,inscritos:{_id:alumnoId,asistencias:{}}}, this.headers)
   }
 
   deleteMateria(id:string){

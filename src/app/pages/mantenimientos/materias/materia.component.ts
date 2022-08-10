@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { delay, map, Subscription } from 'rxjs';
 import { administrador } from 'src/app/interfaces/administradores.interface';
 import { maestro } from 'src/app/interfaces/maestro.interface';
+import { materiasAsistencias } from 'src/app/interfaces/materiasConAsistencias.interface copy';
 import { materias } from 'src/app/interfaces/materiasSimple.interface';
 import { ImgModalServiceService } from 'src/app/services/img-modal-service.service';
 import { MaestrosService } from 'src/app/services/maestros.service';
@@ -24,7 +25,7 @@ export class MateriaComponent implements OnInit, OnDestroy {
   administradores:administrador[];
   instructorSeleccionado:administrador
   idMateria:string=''
-  materia:materias
+  materia:materiasAsistencias
 
   materiaForm = this.fb.group({
     nombre:['',[Validators.required]],

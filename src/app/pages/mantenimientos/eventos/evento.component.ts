@@ -131,7 +131,7 @@ export class EventoComponent implements OnInit {
 
   }
   mostrarimgModal(evento: EventoPopulado) {
-    this.imgModalService.abrirModal('usuario', evento._id, evento.img);
+    this.imgModalService.abrirModal('evento', evento._id, evento.img);
 
   }
 

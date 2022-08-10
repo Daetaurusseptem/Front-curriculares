@@ -14,6 +14,10 @@ materia:{
     _id:string
 }
 role:'alumno'
-google:String
+google:String,
+asistencias:[{
+  fecha:Date,
+  asistio:Boolean
+}]
 
 }

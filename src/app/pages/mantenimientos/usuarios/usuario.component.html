@@ -69,7 +69,7 @@
                                 <input
                                       type="text"
                                       class="form-control"
-                                      placeholder="Nombre completo"
+                                      placeholder="Matricula"
                                       formControlName="matricula"
                                       [value]="alumnoSeleccionado?.matricula"
                                       >
@@ -105,13 +105,24 @@
                         <div class="form-group">
                             <label for="exampleInputuname">Cuatrimestre</label>
                             <div class="input-group">
-                                <input
-                                      type="text"
-                                      class="form-control"
-                                      placeholder="Nombre completo"
-                                      formControlName="cuatrimestre"
-                                      [value]="alumnoSeleccionado?.cuatrimestre"
-                                      >
+
+                                <select name=""
+                                        class="form-control"
+                                        formControlName="cuatrimestre"
+                                        [value]="alumnoSeleccionado?.cuatrimestre"
+                                >
+                                  <option value="0">Induccion</option>
+                                  <option value="1">Primero</option>
+                                  <option value="2">Segundo</option>
+                                  <option value="3">Tercero</option>
+                                  <option value="4">Cuarto</option>
+                                  <option value="5">Quinto</option>
+                                  <option value="6">Sexto</option>
+                                  <option value="7">Septimo</option>
+                                  <option value="8">Octavo</option>
+                                  <option value="9">Noveno</option>
+                                  <option value="10">Decimo</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">

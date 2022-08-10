@@ -7,7 +7,7 @@ export class ListaAsistenciasService {
 
   constructor() { }
 
-  getMesesCicliActuales(){
+  agregarAsistencia(){
 
 
 

@@ -42,7 +42,8 @@ const childRoutes:Routes=[
             { path:'materias-maestro/:id', component:MateriaMaestroComponent},
             { path:'lista-materia/:id', component:ListaAlumnosComponent},
             { path:'lista-asistencias/:id', component:ListaAsistenciasComponent},
-]
+            { path:'ver-evento/:id', component:EventoDetailsComponent},
+          ]
 
 @NgModule({
   imports:[RouterModule.forChild(childRoutes)],

@@ -18,20 +18,20 @@ import Swal from 'sweetalert2';
       min-height: 200vh;
   }`
   ]
-}) 
+})
 export class UsuarioComponent implements OnInit, OnDestroy {
   private imgSubs: Subscription;
   alumnoSeleccionado:alumno;
   materiaSeleccionada:string;
   materias:materias[];
   idAlumno:string
-  
+
 
   alumnoForm = this.fb.group({
     nombre:['',[Validators.required]],
     apellido1:['',[Validators.required]],
     apellido2:[''],
-    matricula:['',[Validators.required]],
+    matricula:[''],
     email:['',[Validators.required]],
     materia:['',[Validators.required]],
     cuatrimestre:['',[Validators.required]],
@@ -45,14 +45,14 @@ export class UsuarioComponent implements OnInit, OnDestroy {
               private materiasService:MateriasService,
               private imgModalService:ImgModalServiceService
               ) {
-                
+
                }
 
   ngOnInit(): void {
     this.getMaterias();
     this.activatedRouter.params.subscribe(params=>{
       this.idAlumno = params['id']
-      
+
       this.cargarAlumno(this.idAlumno)
     })
 
@@ -74,6 +74,7 @@ export class UsuarioComponent implements OnInit, OnDestroy {
 
     this.alumnoService.getAlumno(id)
     .subscribe(alumno=>{
+      console.log(alumno);
       this.alumnoSeleccionado=alumno;
       this.materiaSeleccionada = alumno.materia._id
       console.log('materia: ',this.materiaSeleccionada);
@@ -83,7 +84,7 @@ export class UsuarioComponent implements OnInit, OnDestroy {
         nombre:this.alumnoSeleccionado.nombre,
         apellido1:this.alumnoSeleccionado.apellido1,
         apellido2:this.alumnoSeleccionado.apellido2||'',
-        matricula:this.alumnoSeleccionado.matricula,
+        matricula:this.alumnoSeleccionado.matricula||'',
         email:this.alumnoSeleccionado.email,
         materia:this.alumnoSeleccionado.materia._id,
         cuatrimestre:this.alumnoSeleccionado.cuatrimestre,
@@ -107,7 +108,7 @@ export class UsuarioComponent implements OnInit, OnDestroy {
     const materiaSeleccionadaForm= this.alumnoForm.get('materia').value
     console.log(materiaSeleccionadaForm);
     console.log(this.materiaSeleccionada);
-  
+
       Swal.fire({
         title:'Estas seguro?',
         text:'Deseas realizar estos cambios',
@@ -122,7 +123,7 @@ export class UsuarioComponent implements OnInit, OnDestroy {
 
         }
       })
-    
+
   }
   mostrarimgModal(usuario: alumno) {
     this.imgModalService.abrirModal('usuario', usuario._id, usuario.img);

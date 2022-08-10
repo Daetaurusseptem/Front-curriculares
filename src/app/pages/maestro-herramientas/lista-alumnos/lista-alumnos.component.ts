@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { alumno } from 'src/app/interfaces/alumno.interface';
+import { materiasAsistencias } from 'src/app/interfaces/materiasConAsistencias.interface copy';
 import { materias } from 'src/app/interfaces/materiasSimple.interface';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { BusquedaService } from 'src/app/services/busqueda.service';
@@ -17,7 +18,7 @@ import Swal from 'sweetalert2';
 export class ListaAlumnosComponent implements OnInit {
 
   id=''
-  materia:materias;
+  materia:materiasAsistencias;
   alumnos:alumno[];
 
   totalUsuarios:number;
@@ -49,7 +50,7 @@ export class ListaAlumnosComponent implements OnInit {
     this.materiaService.getMateria(this.id)
     .subscribe(resp=>{
       this.materia = resp
-      this.alumnos=resp.inscritos
+      this.alumnos = resp.inscritos
       console.log(this.materia);
     })
   }
