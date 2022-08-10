@@ -18,7 +18,7 @@
                 <p><b>Realizadores
                   <img class="avatar-realizador pointer mt-2 p-2" *ngFor="let realizador of eventoSeleccionado.realizadores"[src]="realizador.img|mostrarImagen:'usuario'"   alt="" data-toggle="tooltip" data-placement="top" [title]="realizador.nombre+' '+realizador.apellido1+' '+realizador.apellido2">
                 </b></p>
-                <a class="btn btn-success btn-block"  style="background-color: rgb(119, 129,88)">Ire</a>
+                <a class="btn btn-success btn-block"  style="background-color: rgb(119, 129,88)" (click)="addAsistencia()">Ire</a>
             </div><!-- / project-info-box -->
 
 

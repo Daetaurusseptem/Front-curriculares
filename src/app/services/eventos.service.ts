@@ -19,6 +19,14 @@ export class EventosService {
     return this.http.put(`${urlBase}/eventos/actualizarRealizador/${eventoId}`, {'realizadores':administradores}, this.headers)
 
   }
+  addAsistenciaEvento(eventoId:string, usuarioId:string){
+
+    return this.http.put(`${urlBase}/eventos/agregar-asistencia/:${eventoId}/:${usuarioId}`, {}, this.headers)
+
+
+  }
+
+
 
 
   createEvento(evento:Evento){
@@ -60,6 +68,7 @@ export class EventosService {
   deleteInstructor(idEvento:string, idUsuario:string){
     return this.http.delete(`${urlBase}/eventos/${idEvento}/${idUsuario}`, this.headers)
   }
+
 
 
   get headers(): object{

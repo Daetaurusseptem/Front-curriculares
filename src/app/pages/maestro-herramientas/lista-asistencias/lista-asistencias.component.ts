@@ -62,14 +62,14 @@ export class ListaAsistenciasComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(resp=>{
-      console.log(resp['id']);
+      // console.log(resp['id']);
       this.id = resp['id']
       this.cargarMateria()
       this.diasDelMes(new Date().getFullYear(), new Date().getMonth())
     })
     this.selectorFechaAsistenciaForm.get('mes').valueChanges
     .subscribe(currentMonth=>{
-      console.log(currentMonth);
+      // console.log(currentMonth);
       this.mesSeleccionado = currentMonth;
       this.diasDelMes(this.yearActual, currentMonth)
       this.generarFecha(this.diaSeleccionado, this.mesSeleccionado)
@@ -78,7 +78,7 @@ export class ListaAsistenciasComponent implements OnInit {
     .subscribe(SelectedDay=>{
 
       this.diaSeleccionado = SelectedDay;
-      console.log(this.diaSeleccionado);
+      // console.log(this.diaSeleccionado);console.log(this.alumnos);
       this.generarFecha(this.diaSeleccionado, this.mesSeleccionado)
 
     })
@@ -90,7 +90,7 @@ export class ListaAsistenciasComponent implements OnInit {
     .subscribe(resp=>{
       this.materia = resp
       this.alumnos = resp.inscritos
-      console.log(this.alumnos);
+      // console.log(this.alumnos);
     })
   }
 
@@ -116,7 +116,7 @@ export class ListaAsistenciasComponent implements OnInit {
     const fechaAsistencia = new Date(this.fechaSeleccionada);
     this.asistenciasService.addAsistencia(id,{fecha:fechaAsistencia, asistio:true})
     .subscribe(resp=>{
-      console.log(resp);
+      // console.log(resp);
     })
   }
 
@@ -131,14 +131,14 @@ export class ListaAsistenciasComponent implements OnInit {
   contieneFecha(alumno:alumno){
     const existeEnAsistencias = alumno.asistencias.some(e=>{
       // console.log(typeof this.fechaSeleccionada, typeof e.fecha);
-      console.log(new Date(e.fecha),' - ',this.fechaSeleccionada,' : ',(this.fechaSeleccionada==new Date(e.fecha) ) );
+      // console.log(new Date(e.fecha),' - ',this.fechaSeleccionada,' : ',(this.fechaSeleccionada==new Date(e.fecha) ) );
       if( new Date(e.fecha).getTime() === this.fechaSeleccionada.getTime() ){
         return true
       }
       return false
     })
 
-    console.log(existeEnAsistencias);
+    // console.log(existeEnAsistencias);
     return existeEnAsistencias
 }
 

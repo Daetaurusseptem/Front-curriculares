@@ -30,5 +30,7 @@ export class EventoDetailsComponent implements OnInit {
       this.eventoSeleccionado=evento;
     })
   }
+  addAsistencia(){
 
+  }
 }

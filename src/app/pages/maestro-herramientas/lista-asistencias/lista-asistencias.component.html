@@ -3,10 +3,12 @@
   <div class="card-header py-3">
 
     <form [formGroup]="selectorFechaAsistenciaForm">
+      <label for="">Seleccione el mes:</label>
       <select class="form-control" formControlName="mes">
         <option *ngFor="let mes of meses" [value]="mes.numero">{{mes.nombre}}</option>
       </select>
       <div class="card-header py-3">
+        <label for="">Seleccione el dia:</label>
         <select class="form-control" formControlName="dia" name="" id="">
           <option *ngFor="let dia of diasMes" [value]="dia">{{dia}}</option>
 

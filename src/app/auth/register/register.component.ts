@@ -25,6 +25,8 @@ import {materias } from '../../interfaces/materiasSimple.interface';
 export class RegisterComponent implements OnInit {
   public formSubmitted = false;
 
+  numeroInscritos:number
+
   public registerForm = this.fb.group({
     nombre:['', Validators.required],
     apellido1:['',Validators.required],
@@ -78,11 +80,25 @@ export class RegisterComponent implements OnInit {
 
   createUser() {
 
+    this.materiasService.limiteDisponible(this.registerForm.get('materia').value)
+    .subscribe(r=>[
+      this.numeroInscritos = r
+    ])
+
+
     this.formSubmitted = true;
 
-    if (this.registerForm.invalid) {
+    if (this.registerForm.invalid || this.numeroInscritos>=30) {
+        if(this.numeroInscritos>=30) {
+          Swal.fire({
+            title:'Limite alcanzado',
+            text:'No puede inscribirte a esta materia',
+            icon:'error'
+          })
+        }
       return;
     }
+
 
     const materiId =this.registerForm.get('materia').value;
 

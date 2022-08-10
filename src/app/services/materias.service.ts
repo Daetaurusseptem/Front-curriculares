@@ -87,6 +87,12 @@ export class MateriasService {
     return this.http.delete(`${url_base}/materias/${id}`,this.headers)
   }
 
+  limiteDisponible(idMateria:string){
+    return this.http.get<{ok:boolean,numero:number}>(`${url_base}/materias/contar/${idMateria}`,this.headers)
+    .pipe(
+      map(r=>{return r.numero})
+    )
+  }
 
 
   get headers(): object{
