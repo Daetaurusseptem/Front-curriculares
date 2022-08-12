@@ -30,6 +30,8 @@ import { EventoDetailsComponent } from './dashboard-admin/evento-details/evento-
 import { MateriaMaestroComponent } from './maestro-herramientas/materias-maestro/materia-maestro/materia-maestro.component';
 import { ListaAlumnosComponent } from './maestro-herramientas/lista-alumnos/lista-alumnos.component';
 import { ListaAsistenciasComponent } from './maestro-herramientas/lista-asistencias/lista-asistencias.component';
+import { PerfilAlumnoComponent } from './alumno-herramientas/perfil-alumno/perfil-alumno.component';
+import { ExtracurricularAlumnoComponent } from './alumno-herramientas/extracurricular-alumno/extracurricular-alumno.component';
 
 
 
@@ -55,7 +57,9 @@ import { ListaAsistenciasComponent } from './maestro-herramientas/lista-asistenc
     EventoDetailsComponent,
     MateriaMaestroComponent,
     ListaAlumnosComponent,
-    ListaAsistenciasComponent
+    ListaAsistenciasComponent,
+    PerfilAlumnoComponent,
+    ExtracurricularAlumnoComponent
   ],
   imports: [
     CommonModule,

@@ -6,12 +6,45 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class VerCicloPipe implements PipeTransform {
 
-  transform(value: number, ...args: unknown[]): unknown {
-    const a = Math.floor(value / 3);
-    if (a == 0){
-      return 1
+  transform(value: number|any, ...args: unknown[]): unknown {
+
+    switch (value) {
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+        return 1
+      case 4:
+      case 5:
+      case 6:
+      case 7:
+        return 2
+      case 8:
+      case 9:
+      case 10:
+      case 11:
+        return 3
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+        return 1
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+        return 2
+      case '8':
+      case '9':
+      case '10':
+      case '11':
+        return 3
+
+      default:
+        return 'No valido'
     }
-    return a
+
+
   }
 
 }

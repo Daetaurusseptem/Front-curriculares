@@ -1,0 +1,120 @@
+<div class="container emp-profile">
+  <form method="post">
+      <div class="row">
+          <div class="col-md-4">
+              <div class="profile-img">
+                  <img [src]="usuario.img|mostrarImagen:'usuario'" alt=""/>
+                  <div class="file btn btn-lg btn-primary" (click)="mostrarimgModal(usuario._id, usuario.img)">
+                       Cambiar foto
+                      <input type="file" name="file"/>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="profile-head">
+                          <h5>
+                              {{usuario.nombre}} {{usuario.apellido1}} {{usuario.apellido2}}
+                          </h5>
+                          <h6>
+                              {{usuario.carrera}}
+                          </h6>
+                          <p class="proile-rating">CALIFICACIONES : <span>8/10</span></p>
+                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                      <li class="nav-item">
+                          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Informacion Personal</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Servicio Social y Asistencias</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+          <div class="col-md-2">
+              <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+          </div>
+      </div>
+      <div class="row" style="margin-top:1rem ;">
+          <div class="col-md-4">
+              <div class="profile-work">
+                  <p>WORK LINK</p>
+              </div>
+          </div>
+          <div class="col-md-8">
+              <div class="tab-content profile-tab" id="myTabContent">
+                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <label>Nombre Completo</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <p>{{usuario.nombre}} {{usuario.apellido1}} {{usuario.apellido2}}</p>
+                                  </div>
+                              </div>
+
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <label>Email</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <p>{{usuario.email}}</p>
+                                  </div>
+                              </div>
+                              <div *ngIf="usuario.role=='alumno'" class="row">
+                                  <div class="col-md-6">
+                                      <label>Carrera</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <p>{{usuario.carrera}}</p>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <label>Matricula</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <p *ngIf="!usuario.matricula">Induccion</p>
+                                      <p *ngIf="usuario.matricula">{{usuario.matricula}}</p>
+                                  </div>
+                              </div>
+                  </div>
+                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+
+                        <div class="row">
+                          <div class="col-md-6">
+                              <label>Servicio Social</label>
+                          </div>
+                          <div class="col-md-6">
+                              <p *ngIf="!usuario.servicioSocial.status">No Terminado</p>
+                              <p *ngIf="usuario.servicioSocial.status">Terminado</p>
+
+                          </div>
+
+                      </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                              <label>Horas Cumplidas</label>
+                          </div>
+                          <div class="col-md-6">
+                              <p>{{usuario.asistencias.length}} Horas</p>
+
+                          </div>
+                      </div>
+
+                      <div  class="row">
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect2">Fechas de Asistencia</label>
+                          <select multiple disabled class="form-control" id="exampleFormControlSelect2">
+                            <option *ngFor="let asistencia of usuario.asistencias;">{{asistencia.fecha|mostrarHoras}}</option>
+
+
+                          </select>
+                        </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+  </form>
+</div>

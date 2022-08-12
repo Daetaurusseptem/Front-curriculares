@@ -61,11 +61,13 @@ export class ListaAsistenciasComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.activatedRoute.params.subscribe(resp=>{
       // console.log(resp['id']);
       this.id = resp['id']
       this.cargarMateria()
       this.diasDelMes(new Date().getFullYear(), new Date().getMonth())
+
     })
     this.selectorFechaAsistenciaForm.get('mes').valueChanges
     .subscribe(currentMonth=>{
@@ -134,8 +136,9 @@ export class ListaAsistenciasComponent implements OnInit {
       // console.log(new Date(e.fecha),' - ',this.fechaSeleccionada,' : ',(this.fechaSeleccionada==new Date(e.fecha) ) );
       if( new Date(e.fecha).getTime() === this.fechaSeleccionada.getTime() ){
         return true
+      }else{
+        return false
       }
-      return false
     })
 
     // console.log(existeEnAsistencias);

@@ -42,7 +42,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let alumno of alumnos">
-            <td>{{alumno.nombre}} {{alumno.apellido1}} {{alumno.apellido2}}</td>
+            <td>{{alumno.apellido1}} {{alumno.apellido2}} {{alumno.nombre}} </td>
             <td *ngIf="alumno.matricula">{{alumno.matricula}}</td>
             <td *ngIf="!alumno.matricula">Induccion</td>
             <td class="text-nowrap text-center">

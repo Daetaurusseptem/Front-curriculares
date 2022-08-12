@@ -31,8 +31,8 @@ export class UsuarioService {
       map( (resp: any) => {
 
         const uid = resp.uid;
-        const {nombre, email, apellido1, role, cuatrimestre='', carrera='', img= '', matricula, materia, apellido2, servicioSocial=null} = resp.usuario;
-        this.usuario = new Usuario(uid, nombre, apellido1, email, role, cuatrimestre, carrera, matricula, materia, servicioSocial, apellido2, '', img, undefined);
+        const {nombre, email, apellido1, role, cuatrimestre='', carrera='', img= '', matricula, materia, apellido2, servicioSocial, asistencias} = resp.usuario;
+        this.usuario = new Usuario(uid, nombre, apellido1, email, role, cuatrimestre, carrera, matricula, materia, servicioSocial, apellido2, '', img, undefined, asistencias);
         this.guardarLocalStorage(resp.token, resp.menu)
         return true;
       }),
@@ -84,6 +84,8 @@ export class UsuarioService {
     localStorage.removeItem('token');
     localStorage.removeItem('menu');
 }
+
+
 
 
 }
