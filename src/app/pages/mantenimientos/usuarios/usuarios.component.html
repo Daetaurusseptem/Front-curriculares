@@ -23,7 +23,7 @@
           </div>
     </div>
 
-    <div class="card-body">
+    <div *ngIf="!cargando" class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -53,7 +53,8 @@
                         <td>{{alumno.email}}</td>
                         <td>{{alumno.cuatrimestre}}</td>
                         <td>{{alumno.carrera}}</td>
-                        <td>{{alumno.matricula}}</td>
+                        <td *ngIf="alumno.matricula">{{alumno.matricula}}</td>
+                        <td *ngIf="!alumno.matricula">Induccion</td>
                         <td *ngIf="alumno.materia">{{alumno.materia.nombre|| ''}}</td>
                         <td *ngIf="!alumno.materia">*</td>
                         <td>
@@ -70,7 +71,8 @@
                 </tbody>
             </table>
             <div>
-                <button class="btn btn-secondary" (click)="cambiarPagina(-5)" >Anterior</button>
+                <button *ngIf="desde==0" disabled class="btn btn-secondary" (click)="cambiarPagina(-5)" >Anterior</button>
+                <button *ngIf="desde>0" class="btn btn-secondary" (click)="cambiarPagina(-5)" >Anterior</button>
                 &nbsp;
                 <button class="btn btn-secondary" (click)="cambiarPagina(5)" >Siguiente</button>
             </div>

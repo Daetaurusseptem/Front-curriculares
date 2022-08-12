@@ -18,14 +18,14 @@
                 <p><b>Realizadores
                   <img class="avatar-realizador pointer mt-2 p-2" *ngFor="let realizador of eventoSeleccionado.realizadores"[src]="realizador.img|mostrarImagen:'usuario'"   alt="" data-toggle="tooltip" data-placement="top" [title]="realizador.nombre+' '+realizador.apellido1+' '+realizador.apellido2">
                 </b></p>
-                <a class="btn btn-success btn-block"  style="background-color: rgb(119, 129,88)" (click)="addAsistencia()">Ire</a>
+                <a *ngIf="!asistencia"class="btn btn-success btn-block"  style="background-color: rgb(119, 129,88)" (click)="addAsistenciaEvento()">Ire</a>
+                <a  *ngIf="asistencia"class="btn btn-danger btn-block"  style="background-color: rgb(196, 109, 120)" (click)="deleteAsistencia()">No Ire</a>
             </div><!-- / project-info-box -->
 
 
         </div><!-- / column -->
 
         <div class="col-md-7">
-            <img [src]="eventoSeleccionado.img | mostrarImagen:'evento'"  alt="img-evento" class="img-avatar rounded">
-
+            <img [src]="eventoSeleccionado.img | mostrarImagen:'evento'"  alt="img-evento"  class="img-avatar rounded">
         </div><!-- / column -->
     </div>

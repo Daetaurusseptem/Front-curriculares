@@ -14,7 +14,8 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h2 class="m-0 font-weight-bold text-primary">Alumnos Inscritos</h2>
-        <h6 class="m-0 font-weight-bold text-muted">Total de alumnos: {{alumnos?.length}}</h6>
+        <h6 *ngIf="alumnos?.length>=30"class="m-0 font-weight-bold text-muted">Total de alumnos: {{alumnos?.length}} <span class="text-danger">Limite Alcanzado</span></h6>
+        <h6 *ngIf="alumnos?.length<30" class="m-0 font-weight-bold text-muted">Total de alumnos: {{alumnos?.length}}</h6>
     </div>
 
 

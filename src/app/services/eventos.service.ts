@@ -20,13 +20,20 @@ export class EventosService {
 
   }
   addAsistenciaEvento(eventoId:string, usuarioId:string){
-
-    return this.http.put(`${urlBase}/eventos/agregar-asistencia/:${eventoId}/:${usuarioId}`, {}, this.headers)
-
-
+    return this.http.put(`${urlBase}/eventos/agregar-asistencia/${eventoId}/${usuarioId}`, {}, this.headers)
+  }
+  deleteAsistenciaEvento(eventoId:string, usuarioId:string){
+    return this.http.delete(`${urlBase}/eventos/eliminar-asistencia-evento/${eventoId}/${usuarioId}`, this.headers)
   }
 
-
+  comprobarAsistencia(eventoId:string, usuarioId:string){
+    return this.http.get<{asistencia:boolean}>(`${urlBase}/eventos/comprobar-asistencia/${eventoId}/${usuarioId}`, this.headers)
+    .pipe(
+      map(item=>{
+        return item.asistencia
+      })
+    )
+  }
 
 
   createEvento(evento:Evento){

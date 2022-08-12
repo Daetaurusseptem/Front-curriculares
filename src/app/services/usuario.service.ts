@@ -71,9 +71,9 @@ export class UsuarioService {
      return this.usuario.role
    }
 
-  // get uid(): string{
-  //   return this.usuario.uid || '';
-  // }
+   get id(): string{
+     return this.usuario._id || '';
+   }
   guardarLocalStorage(token:string, menu:any){
     var a = JSON.stringify(menu)
     console.log(a);

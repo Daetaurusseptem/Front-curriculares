@@ -51,6 +51,7 @@ export class ListaAlumnosComponent implements OnInit {
     .subscribe(resp=>{
       this.materia = resp
       this.alumnos = resp.inscritos
+      this.alumnosTemp = resp.inscritos;
       console.log(this.materia);
     })
   }
