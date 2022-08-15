@@ -118,7 +118,7 @@ export class ListaAsistenciasComponent implements OnInit {
     const fechaAsistencia = new Date(this.fechaSeleccionada);
     this.asistenciasService.addAsistencia(id,{fecha:fechaAsistencia, asistio:true})
     .subscribe(resp=>{
-      // console.log(resp);
+      this.cargarMateria()
     })
   }
 

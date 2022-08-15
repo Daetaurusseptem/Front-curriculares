@@ -10,11 +10,12 @@ import { StringifyPipe } from './stringify.pipe';
 import { VerMesPipe } from './ver-mes.pipe';
 import { VerCicloPipe } from './ver-ciclo.pipe';
 import { GenerarfechaPipe } from './generarfecha.pipe';
+import { OrdenarFechasPipe } from './ordenar-fechas.pipe';
 
 
 
 @NgModule({
-  declarations: [MostrarImagenPipe, CutNamePipe, DigitoIndividualPipe, DesestructurarObjPipe, MostrarFechaPipe, MostrarHorasPipe, StringifyPipe, VerMesPipe, VerCicloPipe, GenerarfechaPipe],
+  declarations: [MostrarImagenPipe, CutNamePipe, DigitoIndividualPipe, DesestructurarObjPipe, MostrarFechaPipe, MostrarHorasPipe, StringifyPipe, VerMesPipe, VerCicloPipe, GenerarfechaPipe, OrdenarFechasPipe],
   imports: [
     CommonModule
   ],
@@ -27,7 +28,8 @@ import { GenerarfechaPipe } from './generarfecha.pipe';
     MostrarHorasPipe,
     StringifyPipe,
     VerMesPipe,
-    VerCicloPipe
+    VerCicloPipe,
+    OrdenarFechasPipe
   ]
 })
 export class PipesModule { }

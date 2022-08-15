@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { delay, Subscription } from 'rxjs';
 import { alumno } from 'src/app/interfaces/alumno.interface';
@@ -7,6 +7,8 @@ import { materias } from 'src/app/interfaces/materiasSimple.interface';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { ImgModalServiceService } from 'src/app/services/img-modal-service.service';
 import { MateriasService } from 'src/app/services/materias.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { Usuario } from 'src/models/usuario.model';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -25,6 +27,7 @@ export class UsuarioComponent implements OnInit, OnDestroy {
   materiaSeleccionada:string;
   materias:materias[];
   idAlumno:string
+  usuario:Usuario;
 
 
   alumnoForm = this.fb.group({
@@ -33,7 +36,7 @@ export class UsuarioComponent implements OnInit, OnDestroy {
     apellido2:[''],
     matricula:[''],
     email:['',[Validators.required]],
-    materia:['',[Validators.required]],
+    materia:['',[]],
     cuatrimestre:['',[Validators.required]],
     carrera:['',[Validators.required]]
   })
@@ -43,9 +46,10 @@ export class UsuarioComponent implements OnInit, OnDestroy {
               private alumnoService:AlumnosService,
               private fb:FormBuilder,
               private materiasService:MateriasService,
-              private imgModalService:ImgModalServiceService
+              private imgModalService:ImgModalServiceService,
+              private UsuarioModel:UsuarioService
               ) {
-
+                this.usuario = UsuarioModel.usuario
                }
 
   ngOnInit(): void {
@@ -76,23 +80,39 @@ export class UsuarioComponent implements OnInit, OnDestroy {
     .subscribe(alumno=>{
       console.log(alumno);
       this.alumnoSeleccionado=alumno;
-      this.materiaSeleccionada = alumno.materia._id
-      console.log('materia: ',this.materiaSeleccionada);
-      this.alumnoForm.get('materia').setValue(alumno.materia._id)
+      try {
+        this.materiaSeleccionada = alumno.materia._id
+        console.log('materia: ',this.materiaSeleccionada);
+        this.alumnoForm.get('materia').setValue(alumno.materia._id)
 
-      this.alumnoForm.setValue({
-        nombre:this.alumnoSeleccionado.nombre,
-        apellido1:this.alumnoSeleccionado.apellido1,
-        apellido2:this.alumnoSeleccionado.apellido2||'',
-        matricula:this.alumnoSeleccionado.matricula||'',
-        email:this.alumnoSeleccionado.email,
-        materia:this.alumnoSeleccionado.materia._id,
-        cuatrimestre:this.alumnoSeleccionado.cuatrimestre,
-        carrera:this.alumnoSeleccionado.carrera
-      })
+        this.alumnoForm.setValue({
+          nombre:this.alumnoSeleccionado.nombre,
+          apellido1:this.alumnoSeleccionado.apellido1,
+          apellido2:this.alumnoSeleccionado.apellido2||'',
+          matricula:this.alumnoSeleccionado.matricula||'',
+          email:this.alumnoSeleccionado.email,
+          materia:this.alumnoSeleccionado.materia._id||'',
+          cuatrimestre:this.alumnoSeleccionado.cuatrimestre,
+          carrera:this.alumnoSeleccionado.carrera
+        })
+      } catch (error) {
+        console.log('shieeet');
+        this.alumnoForm.setValue({
+          nombre:this.alumnoSeleccionado.nombre,
+          apellido1:this.alumnoSeleccionado.apellido1,
+          apellido2:this.alumnoSeleccionado.apellido2||'',
+          matricula:this.alumnoSeleccionado.matricula||'',
+          email:this.alumnoSeleccionado.email,
+          materia:'',
+          cuatrimestre:this.alumnoSeleccionado.cuatrimestre,
+          carrera:this.alumnoSeleccionado.carrera
+        })
+      }
 
 
-      console.log(this.alumnoForm);
+
+
+      console.log(this.alumnoForm.value);
     })
   }
 
@@ -105,9 +125,10 @@ export class UsuarioComponent implements OnInit, OnDestroy {
   }
 
   guardarAlumno(){
-    const materiaSeleccionadaForm= this.alumnoForm.get('materia').value
-    console.log(materiaSeleccionadaForm);
-    console.log(this.materiaSeleccionada);
+    const materiaSeleccionadaFromForm = this.alumnoForm.get('materia').value
+
+      console.log(this.alumnoForm.value);
+
 
       Swal.fire({
         title:'Estas seguro?',
@@ -116,10 +137,13 @@ export class UsuarioComponent implements OnInit, OnDestroy {
       })
       .then(resp=>{
         if(resp.isConfirmed){
-          this.alumnoService.updateAlumno(this.alumnoForm.value, this.alumnoSeleccionado._id)
-          .subscribe(resp=>{
-            this.cargarAlumno(this.alumnoSeleccionado._id)
-          })
+          if (this.materiaSeleccionada) {
+
+            this.alumnoService.updateAlumno(this.alumnoForm.value, this.alumnoSeleccionado._id, this.materiaSeleccionada)
+          }else{
+            this.alumnoService.updateAlumno(this.alumnoForm.value, this.alumnoSeleccionado._id)
+
+          }
 
         }
       })

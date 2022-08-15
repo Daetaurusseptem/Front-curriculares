@@ -47,14 +47,14 @@
             <td *ngIf="!alumno.matricula">Induccion</td>
             <td class="text-nowrap text-center">
               <input
+                    *ngIf="!contieneFecha(alumno)"
+                    type="checkbox"
+                    (change)="agregarAsistencia(alumno._id)"
+              >
+              <input
                     *ngIf="contieneFecha(alumno)"
                     type="checkbox"
                     checked
-                    (change)="agregarAsistencia(alumno._id)"
-                    >
-              <input
-                    *ngIf="!contieneFecha(alumno)"
-                    type="checkbox"
                     (change)="agregarAsistencia(alumno._id)"
                     >
             </td>

@@ -10,8 +10,8 @@ cuatrimestre:String
 carrera:String
 matricula:String
 materia:{
-    nombre:String,
-    _id:string
+    nombre?:String,
+    _id:string|null
 }
 role:'alumno'
 google:String,

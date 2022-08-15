@@ -55,9 +55,10 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    this.usuarioService.borrarLocalStorage()
     console.log('entro');
     this.usuarioService.login( this.loginForm.value )
-      .subscribe( resp => {
+    .subscribe( resp => {
         // Navegar al Dashboard
         this.router.navigateByUrl('dashboard');
 

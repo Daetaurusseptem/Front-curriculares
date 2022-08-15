@@ -102,14 +102,22 @@
                       </div>
 
                       <div  class="row">
-                        <div class="form-group">
-                          <label for="exampleFormControlSelect2">Fechas de Asistencia</label>
-                          <select multiple disabled class="form-control" id="exampleFormControlSelect2">
-                            <option *ngFor="let asistencia of usuario.asistencias;">{{asistencia.fecha|mostrarHoras}}</option>
-
-
-                          </select>
-                        </div>
+                        <table class="table table-sm">
+                          <thead>
+                            <tr>
+                              <th scope="col">Fecha</th>
+                              <th scope="col">Asistencia</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of usuario.asistencias|ordenarFechas">
+                              <td>{{item.fecha|mostrarHoras}}</td>
+                              <td>
+                                <i class="fa fa-check txt-succes"></i>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
 
                   </div>

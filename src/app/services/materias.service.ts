@@ -29,9 +29,6 @@ export class MateriasService {
   }
 
 
-
-
-
   updateMateria(id:string ,materia:{nombre:string, descripcion:string}){
     return this.http.put(`${url_base}/materias/${id}`, {materia:materia}, this.headers)
   }
@@ -80,7 +77,7 @@ export class MateriasService {
   }
 
   addUser(materiaId:string, alumnoId:string){
-    return this.http.put(`${url_base}/materias/alumno/${alumnoId}/${materiaId}`,{_id:alumnoId,inscritos:{_id:alumnoId,asistencias:{}}}, this.headers)
+    return this.http.put(`${url_base}/materias/alumno/${materiaId}/${alumnoId}`,{_id:alumnoId,inscritos:{_id:alumnoId,asistencias:{}}}, this.headers)
   }
 
   deleteMateria(id:string){
