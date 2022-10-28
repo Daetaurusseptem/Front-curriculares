@@ -7,7 +7,7 @@
             <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Crea cuentas para los maestros</h1>
             </div>
-            <form 
+            <form
                 class="user"
                 id="registerMaestroForm"
                 [formGroup]="registerMaestroForm"
@@ -16,8 +16,8 @@
 
                 <div class="form-group row">
 
-                    <input type="text" 
-                           class="form-control form-control-user" 
+                    <input type="text"
+                           class="form-control form-control-user"
                            placeholder="*Nombre completo"
                            formControlName="nombre"
                             >
@@ -25,33 +25,33 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                        
-                        <input type="text" 
-                        class="form-control form-control-user" 
+
+                        <input type="text"
+                        class="form-control form-control-user"
                         placeholder="*Primer Apellido"
                         formControlName="apellido1"
                         >
                     </div>
                     <div class="col-sm-6">
-                        
-                        <input type="text" 
-                        class="form-control form-control-user" 
+
+                        <input type="text"
+                        class="form-control form-control-user"
                         placeholder="Segundo Apellido"
                         formControlName="apellido2"
                         >
-                        
+
                     </div>
                 </div>
                 <div class="form-group">
-                    <input 
-                    type="email" 
-                    class="form-control form-control-user" 
+                    <input
+                    type="email"
+                    class="form-control form-control-user"
                     placeholder="Correo electronico"
                     formControlName="email"
                     >
                 </div>
                 <div class="form-group row">
-                    <select  
+                    <select
                             class="form-control rounded-pill"
                             formControlName="materia"
                             >
@@ -61,13 +61,13 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="password" 
+                        <input type="password"
                                class="form-control form-control-user"
                                formControlName="password"
                                placeholder="Password">
                     </div>
                     <div class="col-sm-6">
-                        <input type="password" 
+                        <input type="password"
                                class="form-control form-control-user"
                                formControlName="password2"
                                placeholder="Repeat Password">
@@ -79,18 +79,15 @@
                     <p *ngIf="campoNoValido('email')" class="text-danger">correo invalida</p>
                     <p *ngIf="campoNoValido('materia')" class="text-danger">materia invalida</p>
                     <p *ngIf="contrasenasNoValidas()" class="text-danger">las contrasenas deben coincidir</p>
-                    
-                    
-
                     <p *ngIf="contrasenasNoValidas()" class="text-danger">contrasenas invalidas</p>
                 </div>
                 <button class="btn btn-primary btn-user btn-block" type="submit">
                     Registrar Maestro
                 </button>
-                
+
             </form>
             <hr>
-            
+
         </div>
     </div>
 </div>

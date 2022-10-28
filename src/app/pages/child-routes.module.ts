@@ -21,6 +21,7 @@ import { MateriaMaestroComponent } from './maestro-herramientas/materias-maestro
 import { ListaAlumnosComponent } from './maestro-herramientas/lista-alumnos/lista-alumnos.component';
 import { ListaAsistenciasComponent } from './maestro-herramientas/lista-asistencias/lista-asistencias.component';
 import { PerfilAlumnoComponent } from './alumno-herramientas/perfil-alumno/perfil-alumno.component';
+import { AlumnoInformacionComponent } from './maestro-herramientas/alumno-informacion/alumno-informacion.component';
 
 const childRoutes:Routes=[
             { path: '', component: DashboardAdminComponent, data:{title: 'Dashboard'}},
@@ -42,8 +43,11 @@ const childRoutes:Routes=[
             { path:'materias-maestro', component:MateriasMaestroComponent},
             { path:'materias-maestro/:id', component:MateriaMaestroComponent},
             { path:'lista-materia/:id', component:ListaAlumnosComponent},
+            { path:'lista-materia/:idMateria/:idAlumno', component:AlumnoInformacionComponent},
             { path:'lista-asistencias/:id', component:ListaAsistenciasComponent},
             { path:'ver-evento/:id', component:EventoDetailsComponent},
+            { path:'ver-evento/:id', component:EventoDetailsComponent},
+
             //*Alumnos
             {path:'perfil-alumno', component:PerfilAlumnoComponent}
 

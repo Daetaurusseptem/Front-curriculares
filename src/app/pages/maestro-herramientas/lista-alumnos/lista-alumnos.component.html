@@ -56,9 +56,13 @@
                             <a (click)="eliminarAlumnoMateria(alumno._id)">
                                 <i class="fas fa-trash text-danger pointer" style="margin-right: 20px;"></i>
                             </a>
-                            <a [routerLink]="['/dashboard/alumno',alumno._id]">
-                                <i class="fas fa-edit text-primary"></i>
+                            <a [routerLink]="['/dashboard/alumno',alumno._id]" style="margin-right: 20px;">
+                              <i class="fas fa-edit text-primary"></i>
                             </a>
+                            <a  [routerLink]="['/dashboard/lista-materia',materia._id, alumno._id]">
+                                <i class="fas fa-bars text-primary pointer" ></i>
+                            </a>
+
 
                         </td>
                     </tr>

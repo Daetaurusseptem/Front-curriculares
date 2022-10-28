@@ -32,6 +32,7 @@ import { ListaAlumnosComponent } from './maestro-herramientas/lista-alumnos/list
 import { ListaAsistenciasComponent } from './maestro-herramientas/lista-asistencias/lista-asistencias.component';
 import { PerfilAlumnoComponent } from './alumno-herramientas/perfil-alumno/perfil-alumno.component';
 import { ExtracurricularAlumnoComponent } from './alumno-herramientas/extracurricular-alumno/extracurricular-alumno.component';
+import { AlumnoInformacionComponent } from './maestro-herramientas/alumno-informacion/alumno-informacion.component';
 
 
 
@@ -59,7 +60,8 @@ import { ExtracurricularAlumnoComponent } from './alumno-herramientas/extracurri
     ListaAlumnosComponent,
     ListaAsistenciasComponent,
     PerfilAlumnoComponent,
-    ExtracurricularAlumnoComponent
+    ExtracurricularAlumnoComponent,
+    AlumnoInformacionComponent
   ],
   imports: [
     CommonModule,
